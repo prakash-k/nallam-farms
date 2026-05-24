@@ -6,6 +6,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================
+       0. EMAILJS INITIALIZATION
+       ========================================== */
+    // Initialize EmailJS with your public key
+    // Get your public key from https://dashboard.emailjs.com/
+    emailjs.init("CR_ByoZ6vz4ZxQ-3j");
+
+    /* ==========================================
        1. STICKY HEADER & SCROLL STATE
        ========================================== */
     const header = document.getElementById('site-header');
@@ -246,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inquiryForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Collect Form Values for logging/checking if needed
+            // Collect Form Values
             const name = document.getElementById('full-name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
@@ -255,21 +262,47 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log('Nallam Farms Form Submission:', { name, email, phone, type, message });
             
-            // Emulate premium API request time
+            // Show loading state
             const submitBtn = document.getElementById('form-submit-btn');
             submitBtn.textContent = 'Sending Inquiry...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             
-            setTimeout(() => {
-                // Fade out form, fade in success block
-                inquiryForm.style.display = 'none';
-                formSuccessAlert.style.display = 'flex';
-                
-                submitBtn.textContent = 'Send Message';
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '';
-            }, 1200);
+            // Send email via EmailJS
+            emailjs.send(
+                'service_rdy6q9h',      // Replace with your EmailJS Service ID
+                'template_vj5ij5x',     // Replace with your EmailJS Template ID
+                {
+                    to_email: 'nallamfarms@gmail.com',
+                    from_name: name,
+                    from_email: email,
+                    phone_number: phone,
+                    inquiry_type: type,
+                    message: message
+                }
+            ).then(
+                function(response) {
+                    console.log('Email sent successfully!', response);
+                    
+                    // Show success message
+                    inquiryForm.style.display = 'none';
+                    formSuccessAlert.style.display = 'flex';
+                    
+                    // Reset button state
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '';
+                },
+                function(error) {
+                    console.error('Failed to send email:', error);
+                    alert('Sorry, there was an error sending your inquiry. Please try again.');
+                    
+                    // Reset button state on error
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '';
+                }
+            );
         });
         
         resetSuccessBtn.addEventListener('click', () => {
