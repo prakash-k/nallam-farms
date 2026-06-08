@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (productId) {
                 textilesIframe.src = `textiles_app/build/web/index.html?t=${timestamp}#/product?id=${productId}`;
             } else {
-                textilesIframe.src = `textiles_app/build/web/index.html?t=${timestamp}`;
+                textilesIframe.src = `textiles_app/build/web/index.html?t=${timestamp}#/catalog`;
             }
 
             // Sync locale state with iframe when it loads
