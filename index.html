@@ -23,9 +23,6 @@
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- EmailJS Library -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -38,17 +35,19 @@
             
             <nav class="nav-menu" id="nav-menu">
                 <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#products" class="nav-link">Products</a></li>
-                    <li><a href="#why-choose-us" class="nav-link">Why Us</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
-                    <li><a href="#testimonials" class="nav-link">Reviews</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#home" class="nav-link active" data-tab-main="farms">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-tab-main="farms">About</a></li>
+                    <li><a href="#products" class="nav-link" data-tab-main="farms">Products</a></li>
+                    <li><a href="#why-choose-us" class="nav-link" data-tab-main="farms">Why Us</a></li>
+                    <li><a href="#textiles" class="nav-link" id="main-nav-textiles" data-tab-main="textiles">Textiles</a></li>
+                    <li><a href="#contact" class="nav-link" data-tab-main="farms">Contact</a></li>
                 </ul>
             </nav>
             
             <div class="header-actions">
+                <div class="lang-switch-container">
+                    <button class="btn-lang-switch" id="lang-switch-btn" data-lang="en">JA</button>
+                </div>
                 <a href="#contact" class="btn btn-nav-cta">Inquire Now</a>
                 <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
                     <span class="bar"></span>
@@ -64,14 +63,16 @@
         <button class="drawer-close" id="drawer-close" aria-label="Close Drawer">&times;</button>
         <div class="drawer-content">
             <a href="#home" class="drawer-logo">NALLAM FARMS</a>
+            <div class="lang-switch-container" style="margin: 1.5rem 0; padding: 0 1.5rem;">
+                <button class="btn-lang-switch" id="mobile-lang-switch-btn" data-lang="en" style="width: 100%; text-align: center;">日本語</button>
+            </div>
             <ul class="drawer-links">
-                <li><a href="#home" class="drawer-link">Home</a></li>
-                <li><a href="#about" class="drawer-link">About</a></li>
-                <li><a href="#products" class="drawer-link">Products & Services</a></li>
-                <li><a href="#why-choose-us" class="drawer-link">Why Choose Us</a></li>
-                <li><a href="#experience" class="drawer-link">Farm Experience</a></li>
-                <li><a href="#testimonials" class="drawer-link">Client Reviews</a></li>
-                <li><a href="#contact" class="drawer-link">Contact Us</a></li>
+                <li><a href="#home" class="drawer-link" data-tab-main="farms">Home</a></li>
+                <li><a href="#about" class="drawer-link" data-tab-main="farms">About</a></li>
+                <li><a href="#products" class="drawer-link" data-tab-main="farms">Products & Services</a></li>
+                <li><a href="#why-choose-us" class="drawer-link" data-tab-main="farms">Why Choose Us</a></li>
+                <li><a href="#textiles" class="drawer-link" id="drawer-nav-textiles" data-tab-main="textiles">NALLAM</a></li>
+                <li><a href="#contact" class="drawer-link" data-tab-main="farms">Contact Us</a></li>
             </ul>
             <div class="drawer-footer">
                 <p>Pure food from trusted farms.</p>
@@ -81,6 +82,7 @@
     </div>
 
     <main>
+      <div id="farms-tab-content" class="main-tab-content active">
         <!-- 1. HERO SECTION -->
         <section class="hero-section" id="home">
             <div class="hero-bg-container">
@@ -242,13 +244,22 @@
         <section class="products-section section-padding" id="products">
             <div class="container text-center max-w-lg">
                 <span class="section-subtitle">Premium Categories</span>
-                <h2 class="section-title">Naturally Sourced Farm Offerings</h2>
-                <p class="section-description">Every category represents our dedication to freshness, traditional standards, and reliable supply. Hand-selected for retail and wholesale culinary buyers.</p>
+                <h2 class="section-title">Naturally Sourced Offerings</h2>
+                <p class="section-description">Every category represents our dedication to organic freshness, traditional quality, and reliable supply. Hand-selected for retail and wholesale partners.</p>
+            </div>
+
+            <!-- Products Sub-Tabs Switcher -->
+            <div class="products-tab-container container reveal-item-up">
+                <div class="products-tabs">
+                    <button class="prod-tab-btn active" data-prod-tab="home">Home (All Products)</button>
+                    <button class="prod-tab-btn" data-prod-tab="farms">Farms Products</button>
+                    <button class="prod-tab-btn" data-prod-tab="textiles">Textile Products</button>
+                </div>
             </div>
             
             <div class="container products-grid">
                 <!-- Card 1 -->
-                <div class="product-card reveal-item-up">
+                <div class="product-card reveal-item-up" data-category="farms">
                     <div class="product-img-wrapper">
                         <img src="assets/category_organic.png" alt="Organic Farm Products" class="product-img">
                         <div class="product-tag">Premium</div>
@@ -261,7 +272,7 @@
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="product-card reveal-item-up" style="animation-delay: 0.1s;">
+                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.1s;">
                     <div class="product-img-wrapper">
                         <img src="assets/category_produce.png" alt="Agricultural Produce" class="product-img">
                         <div class="product-tag">Natural</div>
@@ -274,7 +285,7 @@
                 </div>
                 
                 <!-- Card 3 -->
-                <div class="product-card reveal-item-up" style="animation-delay: 0.2s;">
+                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.2s;">
                     <div class="product-img-wrapper">
                         <img src="assets/groundnut.png" alt="Natural Food Products" class="product-img">
                         <div class="product-tag">Pure</div>
@@ -287,7 +298,7 @@
                 </div>
                 
                 <!-- Card 4 -->
-                <div class="product-card reveal-item-up" style="animation-delay: 0.3s;">
+                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.3s;">
                     <div class="product-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80" alt="Wholesale Supply" class="product-img">
                         <div class="product-tag">Wholesale</div>
@@ -300,7 +311,7 @@
                 </div>
                 
                 <!-- Card 5 -->
-                <div class="product-card reveal-item-up" style="animation-delay: 0.4s;">
+                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.4s;">
                     <div class="product-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" alt="Farm Fresh Goods" class="product-img">
                         <div class="product-tag">Fresh Daily</div>
@@ -309,6 +320,131 @@
                         <h3>Farm Fresh Goods</h3>
                         <p>Farm-laid cage-free brown eggs, pure raw dairy items, and fresh farm-ground flours processed with extreme hygienic care.</p>
                         <a href="#contact" class="btn btn-card-cta">Request Quote</a>
+                    </div>
+                </div>
+
+                <!-- Card 6: Textile product -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.1s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/aqua_blue_placemat.png" alt="Aqua Blue Woven Placemat" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Table Linen</span>
+                        <h3>Aqua Blue Ribbed Woven Placemat</h3>
+                        <p>100% yarn-dyed pure cotton ribbed placemat. Elegant bordered trim, heavy weight weave protecting dining tables.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="aqua-blue-placemat">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 7: Textile product -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.2s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/cushion_cover.png" alt="Off White / Green Striped Cushion Cover" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Cushions</span>
+                        <h3>Off White & Forest Green Cushion Cover</h3>
+                        <p>Woven cotton canvas throw pillow cover with YKK invisible side zipper closure and matching piped borders.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="cushion-cover">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 8: Textile product -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.3s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/upholstery_fabric.png" alt="Barnyard Striped Upholstery Fabric" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Fabrics</span>
+                        <h3>Barnyard Striped Upholstery Fabric</h3>
+                        <p>Heavy-duty pure cotton double-ply yarn fabric. Premium abrasion resistance for sofa, drapery, and headboards.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="upholstery-fabric">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 9: Textile product -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.4s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/apron.png" alt="Organic Cotton Kitchen Apron" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Kitchen Linen</span>
+                        <h3>Organic Pure Cotton Kitchen Apron</h3>
+                        <p>Adjustable neck straps and waist ties with double front utility pockets, heavy-duty stain-resistant canvas.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="apron">View Details</a>
+                    </div>
+                </div>
+                <!-- Card 10: Textile product (Pet Bed) -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.5s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/pet_bed.png" alt="Navy Checkered Pet Bed" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Pet Linen</span>
+                        <h3>Navy Checkered Cotton Pet Bed</h3>
+                        <p>Durable 100% heavy cotton canvas pet bed. Removable zippered cover and supportive eco-polyester filling.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="pet-bed">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 11: Textile product (Pet Mat) -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.6s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/pet_mat.png" alt="Checkered Cotton Pet Mat" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Pet Linen</span>
+                        <h3>Blue & Off White Checkered Pet Mat</h3>
+                        <p>Premium yarn-dyed cotton floor cooling mat. Highly durable, fully machine washable, ideal for crates and carriers.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="pet-mat">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 12: Textile product (Snuffle Mat) -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.7s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/snuffle_mat.png" alt="Play & Forage Snuffle Dog Mat" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Pet Linen</span>
+                        <h3>Multicolored Snuffle Forage Dog Mat</h3>
+                        <p>Interactive slow-feeding snuffle mat. Conceals treats in dense cotton folds to stimulate foraging instincts.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="snuffle-mat">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 13: Textile product (Rattan Canopy Bed) -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.8s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/pet_canopy_bed.png" alt="Foldable Rattan Dog Canopy Bed" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Pet Linen</span>
+                        <h3>Foldable Rattan Dog Canopy Bed</h3>
+                        <p>Premium hand-woven PE rattan dog sofa bed with foldable weather-resistant canopy, elevated base, and customizable cushions.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="rattan-canopy-bed">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Card 14: Textile product (Cat Cooling Bed) -->
+                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.9s;">
+                    <div class="product-img-wrapper">
+                        <img src="textiles_app/assets/images/cat_cooling_bed.png" alt="Ultimate Cooling Gel Nest Cat Bed" class="product-img">
+                        <div class="product-tag">Textiles</div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-tag">Pet Linen</span>
+                        <h3>Ultimate Cooling Nest Cat Bed</h3>
+                        <p>Instant cooling gel-infused mesh bed with orthopedic bumper rim, high-density comfort foam, and durable Oxford shell.</p>
+                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="cat-cooling-bed">View Details</a>
                     </div>
                 </div>
             </div>
@@ -533,7 +669,7 @@
                             <div class="testimonial-author">
                                 <div class="author-avatar">P</div>
                                 <div class="author-info">
-                                    <h4>Prabhakaran Chidambaram</h4>
+                                    <h4>Priya Sharma</h4>
                                     <p>Health-Conscious Parent</p>
                                 </div>
                             </div>
@@ -618,7 +754,7 @@
                             </div>
                             <div class="c-card-details">
                                 <h4>Main Farm Office</h4>
-                                <p>Nallam Farms, 158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India</p>
+                                <p>Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore, Tamil Nadu, India - 641001</p>
                             </div>
                         </div>
                         
@@ -631,7 +767,7 @@
                             </div>
                             <div class="c-card-details">
                                 <h4>Phone Support</h4>
-                                <p><a href="tel:+9197894 23115">+91 97894 23115</a> / <a href="tel:+919524142311">+91 95241 42311</a></p>
+                                <p><a href="tel:+919876543210">+91 98765 43210</a> / <a href="tel:+919876543211">+91 98765 43211</a></p>
                             </div>
                         </div>
                         
@@ -645,7 +781,7 @@
                             </div>
                             <div class="c-card-details">
                                 <h4>Inquiries & Email</h4>
-                                <p><a href="mailto:nallamfarms@gmail.com">nallamfarms@gmail.com</a> / <a href="mailto:nallamwholesale@gmail.com">nallamwholesale@gmail.com</a></p>
+                                <p><a href="mailto:info@nallamfarms.com">info@nallamfarms.com</a> / <a href="mailto:wholesale@nallamfarms.com">wholesale@nallamfarms.com</a></p>
                             </div>
                         </div>
                         
@@ -672,13 +808,13 @@
                     <form id="farm-inquiry-form" class="modern-form">
                         <div class="form-group">
                             <label for="full-name" class="form-label">Full Name</label>
-                            <input type="text" id="full-name" name="name" class="form-input" placeholder="e.g. Subramanian" required>
+                            <input type="text" id="full-name" name="name" class="form-input" placeholder="e.g. Priya Sharma" required>
                         </div>
                         
                         <div class="form-row-2">
                             <div class="form-group">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="e.g. subramanian@gmail.com" required>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="e.g. priya@gmail.com" required>
                             </div>
                             
                             <div class="form-group">
@@ -727,15 +863,21 @@
             <div class="container map-container reveal-item-up">
                 <div class="map-wrapper">
                     <!-- Clean minimal map placeholder styled beautiful -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3916.3262602796245!2d78.1326783!3d11.0202712!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa33a06583cdf5%3A0xe8540b520947b9b!2sNALLAM%20FARMS!5e0!3m2!1sen!2sin!4v1716480000000" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125322.28589083161!2d76.88483259902636!3d11.012014498305716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1d3916.3262602796245!2d76.95874287515024!3d11.012214488224535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1716480000000!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div class="map-card">
-                        <h5>NALLAM FARMS KARUR</h5>
+                        <h5>NALLAM FARMS COIMBATORE</h5>
                         <p>Premium farm products fresh from soil.</p>
-                        <a href="https://www.google.com/maps/place/NALLAM+FARMS/@11.0202712,78.1301034,738m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3baa33a06583cdf5:0xe8540b520947b9b!8m2!3d11.0202712!4d78.1326783!16s%2Fg%2F11t5r94bt5?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-card-link">Get Directions &rarr;</a>
+                        <a href="https://maps.google.com" target="_blank" class="map-card-link">Get Directions &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
+      </div>
+
+      <!-- TEXTILES TAB VIEW (Nallam Textiles Flutter app) -->
+      <div id="textiles-tab-content" class="main-tab-content" style="display: none;">
+          <iframe id="textiles-iframe" class="textiles-iframe-container" src="textiles_app/build/web/index.html" title="Nallam Textiles Web Catalog"></iframe>
+      </div>
     </main>
 
     <!-- 10. FOOTER -->
@@ -827,6 +969,64 @@
         </div>
         <button class="lightbox-nav-btn lb-prev-btn" id="lb-prev" aria-label="Previous Lightbox Image">&lt;</button>
         <button class="lightbox-nav-btn lb-next-btn" id="lb-next" aria-label="Next Lightbox Image">&gt;</button>
+    </div>
+
+    <!-- FLOATING WHATSAPP CHAT WIDGET -->
+    <div class="whatsapp-floating-widget" id="whatsapp-floating-widget">
+        <div class="whatsapp-chat-bubble" id="whatsapp-chat-bubble">
+            <button class="bubble-close-btn" id="whatsapp-bubble-close">&times;</button>
+            <div class="bubble-header">
+                <span class="bubble-title">Nallam Helpdesk</span>
+                <span class="bubble-status">Online</span>
+            </div>
+            <p class="bubble-text">Need customized home textiles or organic products? Chat with our expert!</p>
+            <a href="https://wa.me/917591919910?text=Hi%2C%20I%20am%20interested%20in%20Nallam%20Textiles%20products." target="_blank" rel="noopener noreferrer" class="bubble-btn">Start Chat</a>
+        </div>
+        <button class="whatsapp-btn" id="whatsapp-floating-btn" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.46h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span class="whatsapp-tooltip">Chat with us!</span>
+        </button>
+    </div>
+
+    <!-- MOBILE STICKY BOTTOM NAVIGATION BAR -->
+    <div class="mobile-sticky-bottom-nav">
+        <a href="#home" class="bottom-nav-item active" id="bottom-nav-home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="bottom-nav-item" id="bottom-nav-about">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <span>About</span>
+        </a>
+        <a href="#products" class="bottom-nav-item" id="bottom-nav-products">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+            <span>Products</span>
+        </a>
+        <a href="#contact" class="bottom-nav-item" id="bottom-nav-contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span>Contact</span>
+        </a>
+        <a href="https://wa.me/917591919910" target="_blank" rel="noopener noreferrer" class="bottom-nav-item bottom-nav-chat">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.46h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>Chat</span>
+        </a>
     </div>
 
     <!-- MAIN JAVASCRIPT -->

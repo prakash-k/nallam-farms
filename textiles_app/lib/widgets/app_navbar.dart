@@ -45,29 +45,15 @@ class AppNavbar extends StatelessWidget implements PreferredSizeWidget {
                   onTap: () {
                     Navigator.pushNamed(context, '/');
                   },
-                  child: Row(
-                    children: [
-                      const Text(
-                        'NALLAM ',
-                        style: TextStyle(
-                          fontFamily: 'Cormorant Garamond',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFC7A86B), // Muted Gold
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                      Text(
-                        tr('TEXTILES', 'テキスタイル'),
-                        style: const TextStyle(
-                          fontFamily: 'Cormorant Garamond',
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                    ],
+                  child: const Text(
+                    'NALLAM',
+                    style: TextStyle(
+                      fontFamily: 'Cormorant Garamond',
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFC7A86B), // Muted Gold
+                      letterSpacing: 1.5,
+                    ),
                   ),
                 ),
 
