@@ -1,0 +1,7 @@
+# Temp/cache files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+**/chrome-device/
+*.tmp
+*.log

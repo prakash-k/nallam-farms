@@ -131,7 +131,7 @@ class _TextilesProductDetailScreenState extends State<TextilesProductDetailScree
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'NALLAM TEXTILES',
+                        'NALLAM',
                         style: TextStyle(
                           fontFamily: 'Cormorant Garamond',
                           color: Color(0xFFC7A86B),
