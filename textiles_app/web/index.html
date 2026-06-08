@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Nallam Textiles premium home textiles and cotton products catalog.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Nallam Textiles">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Nallam Textiles | Premium Woven Wares</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #1F3A2E;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #FCFBF8;
+    }
+    .loading-container {
+      text-align: center;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(199, 168, 107, 0.2);
+      border-top: 3px solid #C7A86B;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px auto;
+    }
+    .loading-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #C7A86B;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .loading-subtitle {
+      font-size: 0.9rem;
+      color: rgba(252, 251, 248, 0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <div class="loading-title">NALLAM TEXTILES</div>
+    <div class="loading-subtitle">Pure Cotton Craftsmanship</div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        if (registrations.length > 0) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
+          console.log('Stale service worker detected and unregistered. Reloading page to bypass cache...');
+          window.location.reload();
+        }
+      });
+    }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
