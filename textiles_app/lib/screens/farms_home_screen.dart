@@ -174,9 +174,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Authentic & Naturally Grown',
-                style: TextStyle(
+              Text(
+                tr('Authentic & Naturally Grown', 'オーセンティック＆ナチュラル栽培'),
+                style: const TextStyle(
                   fontFamily: 'Plus Jakarta Sans',
                   color: Color(0xFFC7A86B),
                   fontSize: 16,
@@ -186,7 +186,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
               ).animate().fadeIn(duration: 600.ms).slideY(begin: 0.2, end: 0.0, curve: Curves.easeOut),
               const SizedBox(height: 16),
               Text(
-                'Pure Farm Freshness,\nDelivered with Trust',
+                tr('Pure Farm Freshness,\nDelivered with Trust', '信頼と共にお届けする、\n純粋な農場の新鮮さ'),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Cormorant Garamond',
@@ -197,10 +197,10 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 ),
               ).animate().fadeIn(delay: 200.ms, duration: 800.ms).slideY(begin: 0.15, end: 0.0, curve: Curves.easeOut),
               const SizedBox(height: 24),
-              const Text(
-                'Premium naturally sourced agricultural and food products cultivated with care,\nauthenticity, and quality standards directly from our fields to your home.',
+              Text(
+                tr('Premium naturally sourced agricultural and food products cultivated with care,\nauthenticity, and quality standards directly from our fields to your home.', '私たちの畑からあなたのご家庭へ直接、愛情、本物であること、品質基準をもって栽培されたプレミアムな自然由来の農産物および食品をお届けします。'),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'Plus Jakarta Sans',
                   color: Colors.white,
                   fontSize: 16,
@@ -218,9 +218,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                   ),
                 ),
                 onPressed: () => _scrollToKey(_productsKey),
-                child: const Text(
-                  'Explore Products',
-                  style: TextStyle(
+                child: Text(
+                  tr('Explore Products', '商品を見る'),
+                  style: const TextStyle(
                     fontFamily: 'Plus Jakarta Sans',
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -245,10 +245,10 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
         spacing: 48,
         runSpacing: 24,
         children: [
-          _buildTrustItem(Icons.verified_outlined, 'Quality Assured'),
-          _buildTrustItem(Icons.eco_outlined, 'Naturally Sourced'),
-          _buildTrustItem(Icons.nature_people_outlined, 'Farm Fresh'),
-          _buildTrustItem(Icons.handshake_outlined, 'Trusted Supplier'),
+          _buildTrustItem(Icons.verified_outlined, tr('Quality Assured', '品質保証')),
+          _buildTrustItem(Icons.eco_outlined, tr('Naturally Sourced', '自然由来')),
+          _buildTrustItem(Icons.nature_people_outlined, tr('Farm Fresh', '農場直送')),
+          _buildTrustItem(Icons.handshake_outlined, tr('Trusted Supplier', '信頼のサプライヤー')),
         ],
       ),
     );
@@ -340,9 +340,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                           padding: const EdgeInsets.all(24.0),
                           child: Column(
                             children: [
-                              const Text(
-                                'SRI NALLAM',
-                                style: TextStyle(
+                              Text(
+                                tr('SRI NALLAM', 'スリ・ナラム'),
+                                style: const TextStyle(
                                   fontFamily: 'Cormorant Garamond',
                                   color: Color(0xFF1F3A2E),
                                   fontSize: 24,
@@ -351,9 +351,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                                 ),
                               ),
                               const Gap(4),
-                              const Text(
-                                'Founder, Nallam Group',
-                                style: TextStyle(
+                              Text(
+                                tr('Founder, Nallam Group', 'ナラム・グループ創業者'),
+                                style: const TextStyle(
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: Color(0xFFC7A86B),
                                   fontSize: 13,
@@ -364,9 +364,12 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                               const Gap(16),
                               const Divider(color: Color(0xFFE8E2D5)),
                               const Gap(16),
-                              const Text(
-                                '"Our mission is to bring the purity of nature into your home, whether through the organic food you eat or the premium textiles you live with. Trust is our foundation."',
-                                style: TextStyle(
+                              Text(
+                                tr(
+                                  '"Our mission is to bring the purity of nature into your home, whether through the organic food you eat or the premium textiles you live with. Trust is our foundation."',
+                                  '"私たちの使命は、食べるオーガニック食品であれ、共に暮らすプレミアムなテキスタイルであれ、自然の純粋さをあなたのご家庭にお届けすることです。信頼こそが私たちの基盤です。"',
+                                ),
+                                style: const TextStyle(
                                   fontFamily: 'Plus Jakarta Sans',
                                   color: Color(0xFF555555),
                                   fontSize: 14,
@@ -392,9 +395,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Our Heritage & Mission',
-                      style: TextStyle(
+                    Text(
+                      tr('Our Heritage & Mission', '私たちの伝統と使命'),
+                      style: const TextStyle(
                         fontFamily: 'Plus Jakarta Sans',
                         color: Color(0xFFC7A86B),
                         fontSize: 14,
@@ -403,9 +406,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       ),
                     ).animate().fadeIn(delay: 100.ms).slideY(begin: 0.1, end: 0.0),
                     const SizedBox(height: 12),
-                    const Text(
-                      'Rooted in Tradition, Cultivated for Tomorrow',
-                      style: TextStyle(
+                    Text(
+                      tr('Rooted in Tradition, Cultivated for Tomorrow', '伝統に根ざし、未来へ向けて耕す'),
+                      style: const TextStyle(
                         fontFamily: 'Cormorant Garamond',
                         color: Color(0xFF1F3A2E),
                         fontSize: 36,
@@ -414,9 +417,12 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       ),
                     ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.1, end: 0.0),
                     const SizedBox(height: 24),
-                    const Text(
-                      'Nallam Group was founded with a singular vision: to bridge the gap between traditional heritage and modern sustainable living. Combining our rich farming legacy with a state-of-the-art textile manufacturing process, we deliver absolute purity and craftsmanship under one roof.',
-                      style: TextStyle(
+                    Text(
+                      tr(
+                        'Nallam Group was founded with a singular vision: to bridge the gap between traditional heritage and modern sustainable living. Combining our rich farming legacy with a state-of-the-art textile manufacturing process, we deliver absolute purity and craftsmanship under one roof.',
+                        'ナラム・グループは、伝統的な遺産と現代の持続可能な暮らしの架け橋となるという唯一のビジョンを持って設立されました。豊かな農業の伝統と最先端のテキスタイル製造プロセスを組み合わせ、絶対的な純度と職人技を一つの屋根の下で提供しています。',
+                      ),
+                      style: const TextStyle(
                         fontFamily: 'Plus Jakarta Sans',
                         color: Color(0xFF555555),
                         fontSize: 15,
@@ -428,24 +434,33 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                     // Pillar 1: What We Have
                     _buildPillarTile(
                       icon: Icons.eco_outlined,
-                      title: 'What We Have',
-                      description: '100+ acres of certified organic farmlands in the foothills of Coimbatore, Tamil Nadu, and a fully integrated, state-of-the-art handloom and yarn-dyed home textile manufacturing unit.',
+                      title: tr('What We Have', '私たちが保有するもの'),
+                      description: tr(
+                        '100+ acres of certified organic farmlands in the foothills of Coimbatore, Tamil Nadu, and a fully integrated, state-of-the-art handloom and yarn-dyed home textile manufacturing unit.',
+                        'タミル・ナードゥ州コインバトールの麓にある100エーカー以上の認証オーガニック農地、および完全に統合された最先端の手織り・先染めホームテキスタイル製造ユニット。',
+                      ),
                     ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1, end: 0.0),
                     const SizedBox(height: 24),
                     
                     // Pillar 2: What We Have Done
                     _buildPillarTile(
                       icon: Icons.workspace_premium_outlined,
-                      title: 'What We Have Done',
-                      description: 'Successfully harvested and distributed chemical-free heritage grains and vegetables to over 10,000 families, and manufactured premium yarn-dyed linens exported to discerning global markets.',
+                      title: tr('What We Have Done', '実績'),
+                      description: tr(
+                        'Successfully harvested and distributed chemical-free heritage grains and vegetables to over 10,000 families, and manufactured premium yarn-dyed linens exported to discerning global markets.',
+                        '1万世帯以上の家庭に無化学農薬の伝統的な穀物や野菜の収穫と流通を成功させ、厳しい世界市場に輸出されるプレミアムな先染めリネンを製造してきました。',
+                      ),
                     ).animate().fadeIn(delay: 500.ms).slideY(begin: 0.1, end: 0.0),
                     const SizedBox(height: 24),
                     
                     // Pillar 3: Our Location
                     _buildPillarTile(
                       icon: Icons.location_on_outlined,
-                      title: 'Our Location',
-                      description: 'Coimbatore, Tamil Nadu, India\nMain Farm & Office Address: Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (Click to view map)',
+                      title: tr('Our Location', '所在地'),
+                      description: tr(
+                        'Coimbatore, Tamil Nadu, India\nMain Farm & Office Address: Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (Click to view map)',
+                        'インド、タミル・ナードゥ州コインバトール\nメイン農場＆オフィス住所：Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (クリックして地図を表示)',
+                      ),
                       onTap: () {
                         if (kIsWeb) {
                           html.window.open('https://maps.app.goo.gl/uSCEMsqrB6uq1hde7', '_blank');
@@ -533,9 +548,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
       width: double.infinity,
       child: Column(
         children: [
-          const Text(
-            'Premium Categories',
-            style: TextStyle(
+          Text(
+            tr('Premium Categories', 'プレミアム・カテゴリー'),
+            style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
               color: Color(0xFFC7A86B),
               fontSize: 14,
@@ -544,9 +559,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Naturally Sourced Offerings',
-            style: TextStyle(
+          Text(
+            tr('Naturally Sourced Offerings', '自然由来の提供品'),
+            style: const TextStyle(
               fontFamily: 'Cormorant Garamond',
               color: Color(0xFF1F3A2E),
               fontSize: 36,
@@ -560,22 +575,31 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
             alignment: WrapAlignment.center,
             children: [
               _CategoryCard(
-                title: 'Organic Farm Products',
-                description: 'Fresh heirloom vegetables, crisp leafy greens, and handpicked organic fruits grown with certified organic fertilizers.',
+                title: tr('Organic Farm Products', 'オーガニック農産物'),
+                description: tr(
+                  'Fresh heirloom vegetables, crisp leafy greens, and handpicked organic fruits grown with certified organic fertilizers.',
+                  '認証オーガニック肥料で栽培された、新鮮な伝統野菜、シャキシャキした葉物野菜、厳選されたオーガニック果物。',
+                ),
                 imagePath: 'web/farms/assets/category_organic.png',
-                tag: 'Premium',
+                tag: tr('Premium', 'プレミアム'),
               ),
               _CategoryCard(
-                title: 'Agricultural Produce',
-                description: 'High-grade raw grains, ancient millets, golden wheat, and hand-selected legumes packed with nutritious wholeness.',
+                title: tr('Agricultural Produce', '農産品'),
+                description: tr(
+                  'High-grade raw grains, ancient millets, golden wheat, and hand-selected legumes packed with nutritious wholeness.',
+                  '栄養豊富な高品質の生穀物、古代の雑穀、黄金色の小麦、手作業で厳選されたマメ科植物。',
+                ),
                 imagePath: 'web/farms/assets/category_produce.png',
-                tag: 'Natural',
+                tag: tr('Natural', 'ナチュラル'),
               ),
               _CategoryCard(
-                title: 'Natural Food Products',
-                description: 'Artisanal small-batch raw wild honey, cold-pressed culinary oils, and sun-dried farm spices preserved without additives.',
+                title: tr('Natural Food Products', '自然食品'),
+                description: tr(
+                  'Artisanal small-batch raw wild honey, cold-pressed culinary oils, and sun-dried farm spices preserved without additives.',
+                  '添加物不使用で保存された、手作りの小ロットの生野生ハチミツ、コールドプレス調理油、天日干しの農場スパイス。',
+                ),
                 imagePath: 'web/farms/assets/groundnut.png',
-                tag: 'Pure',
+                tag: tr('Pure', 'ピュア'),
               ),
             ],
           ),
@@ -592,9 +616,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
             onPressed: () {
               Navigator.pushNamed(context, '/catalog', arguments: 'All');
             },
-            child: const Text(
-              'View Textiles Catalog',
-              style: TextStyle(
+            child: Text(
+              tr('View Textiles Catalog', 'テキスタイルカタログを見る'),
+              style: const TextStyle(
                 fontFamily: 'Plus Jakarta Sans',
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
@@ -614,9 +638,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
       width: double.infinity,
       child: Column(
         children: [
-          const Text(
-            'Reach Out to Us',
-            style: TextStyle(
+          Text(
+            tr('Reach Out to Us', 'お問い合わせ'),
+            style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
               color: Color(0xFFC7A86B),
               fontSize: 14,
@@ -625,9 +649,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          const Text(
-            'Let\'s Connect for Purity & Freshness',
-            style: TextStyle(
+          Text(
+            tr('Let\'s Connect for Purity & Freshness', '純粋さと新鮮さのために繋がりましょう'),
+            style: const TextStyle(
               fontFamily: 'Cormorant Garamond',
               color: Color(0xFF1F3A2E),
               fontSize: 36,
@@ -635,10 +659,13 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
             ),
           ),
           const SizedBox(height: 24),
-          const Text(
-            'Have a question about our retail subscriptions or commercial crop wholesale options?\nContact us today.',
+          Text(
+            tr(
+              'Have a question about our retail subscriptions or commercial crop wholesale options?\nContact us today.',
+              '個人向けサブスクリプションや商業用作物の卸売オプションについてご質問はありますか？今すぐお問い合わせください。',
+            ),
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
               color: Color(0xFF555555),
               fontSize: 16,
@@ -656,9 +683,9 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
               ),
             ),
             icon: const Icon(Icons.chat_bubble_outline),
-            label: const Text(
-              'WhatsApp Inquiry',
-              style: TextStyle(
+            label: Text(
+              tr('WhatsApp Inquiry', 'WhatsAppでお問い合わせ'),
+              style: const TextStyle(
                 fontFamily: 'Plus Jakarta Sans',
                 fontWeight: FontWeight.bold,
                 fontSize: 16,

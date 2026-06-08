@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../widgets/app_navbar.dart';
 import '../widgets/app_footer.dart';
+import '../l10n/locale_manager.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -43,44 +44,49 @@ class _AuthScreenState extends State<AuthScreen> {
     final width = MediaQuery.of(context).size.width;
     final isMobile = width < 768;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFFCFBF8),
-      appBar: const AppNavbar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: isMobile ? 48 : 80,
-              ),
-              constraints: const BoxConstraints(minHeight: 600),
-              child: Center(
-                child: Container(
-                  width: 500,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: const Color(0xFFE8E2D5), width: 1.5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.03),
-                        blurRadius: 20,
-                        offset: const Offset(0, 8),
+    return ValueListenableBuilder<String>(
+      valueListenable: localeManager.languageNotifier,
+      builder: (context, _, __) {
+        return Scaffold(
+          backgroundColor: const Color(0xFFFCFBF8),
+          appBar: const AppNavbar(),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: isMobile ? 48 : 80,
+                  ),
+                  constraints: const BoxConstraints(minHeight: 600),
+                  child: Center(
+                    child: Container(
+                      width: 500,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0xFFE8E2D5), width: 1.5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.03),
+                            blurRadius: 20,
+                            offset: const Offset(0, 8),
+                          ),
+                        ],
                       ),
-                    ],
+                      child: Padding(
+                        padding: EdgeInsets.all(isMobile ? 24.0 : 40.0),
+                        child: _isSubmitted ? _buildSuccessState() : _buildFormState(),
+                      ),
+                    ).animate().fadeIn(duration: 450.ms).scale(begin: const Offset(0.96, 0.96), curve: Curves.easeOutBack),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(isMobile ? 24.0 : 40.0),
-                    child: _isSubmitted ? _buildSuccessState() : _buildFormState(),
-                  ),
-                ).animate().fadeIn(duration: 450.ms).scale(begin: const Offset(0.96, 0.96), curve: Curves.easeOutBack),
-              ),
+                ),
+                const AppFooter(),
+              ],
             ),
-            const AppFooter(),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -112,7 +118,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
           // Title
           Text(
-            _isSignUp ? 'Create Wholesale Account' : 'Wholesale Portal Log In',
+            _isSignUp ? tr('Create Wholesale Account', '卸売用アカウントの作成') : tr('Wholesale Portal Log In', '卸売ポータルにログイン'),
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontFamily: 'Cormorant Garamond',
@@ -125,8 +131,8 @@ class _AuthScreenState extends State<AuthScreen> {
           
           Text(
             _isSignUp 
-              ? 'Register to gain access to premium pricing, bulk catalog download, and wholesale orders.'
-              : 'Log in to view prices, access your order portal, and download brochures.',
+              ? tr('Register to gain access to premium pricing, bulk catalog download, and wholesale orders.', 'プレミアム価格、一括カタログダウンロード、卸売注文へのアクセス権を得るには、登録してください。')
+              : tr('Log in to view prices, access your order portal, and download brochures.', '価格の表示、注文ポータルへのアクセス、パンフレットのダウンロードを行うにはログインしてください。'),
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
@@ -156,7 +162,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Text(
-                        'Sign Up',
+                        tr('Sign Up', '新規登録'),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'Plus Jakarta Sans',
@@ -178,7 +184,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Text(
-                        'Log In',
+                        tr('Log In', 'ログイン'),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'Plus Jakarta Sans',
@@ -199,12 +205,12 @@ class _AuthScreenState extends State<AuthScreen> {
           if (_isSignUp) ...[
             _buildTextField(
               controller: _nameController,
-              label: 'Full Name',
-              hint: 'e.g. Priya Sharma',
+              label: tr('Full Name', '氏名（フルネーム）'),
+              hint: tr('e.g. Priya Sharma', '例：山田 太郎'),
               icon: Icons.person_outline,
               validator: (val) {
                 if (val == null || val.trim().isEmpty) {
-                  return 'Please enter your name';
+                  return tr('Please enter your name', '名前を入力してください');
                 }
                 return null;
               },
@@ -212,12 +218,12 @@ class _AuthScreenState extends State<AuthScreen> {
             const SizedBox(height: 20),
             _buildTextField(
               controller: _companyController,
-              label: 'Company / Brand Name',
-              hint: 'e.g. RANJINI TEXTILES LTD',
+              label: tr('Company / Brand Name', '会社名 / ブランド名'),
+              hint: tr('e.g. RANJINI TEXTILES LTD', '例：株式会社ナラムテキスタイル'),
               icon: Icons.business_outlined,
               validator: (val) {
                 if (val == null || val.trim().isEmpty) {
-                  return 'Please enter your company name';
+                  return tr('Please enter your company name', '会社名を入力してください');
                 }
                 return null;
               },
@@ -228,16 +234,16 @@ class _AuthScreenState extends State<AuthScreen> {
           // Email Address
           _buildTextField(
             controller: _emailController,
-            label: 'Email Address',
-            hint: 'e.g. info@yourdomain.com',
+            label: tr('Email Address', 'メールアドレス'),
+            hint: tr('e.g. info@yourdomain.com', '例：info@yourdomain.com'),
             icon: Icons.mail_outline,
             keyboardType: TextInputType.emailAddress,
             validator: (val) {
               if (val == null || val.trim().isEmpty) {
-                return 'Please enter your email';
+                return tr('Please enter your email', 'メールアドレスを入力してください');
               }
               if (!val.contains('@') || !val.contains('.')) {
-                return 'Please enter a valid email address';
+                return tr('Please enter a valid email address', '有効なメールアドレスを入力してください');
               }
               return null;
             },
@@ -247,16 +253,16 @@ class _AuthScreenState extends State<AuthScreen> {
           // Password
           _buildTextField(
             controller: _passwordController,
-            label: 'Password',
+            label: tr('Password', 'パスワード'),
             hint: '••••••••',
             icon: Icons.lock_outline,
             obscureText: true,
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Please enter a password';
+                return tr('Please enter a password', 'パスワードを入力してください');
               }
               if (val.length < 6) {
-                return 'Password must be at least 6 characters';
+                return tr('Password must be at least 6 characters', 'パスワードは6文字以上でなければなりません');
               }
               return null;
             },
@@ -276,7 +282,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             onPressed: _submitForm,
             child: Text(
-              _isSignUp ? 'CREATE WHOLESALE PORTAL' : 'LOG IN',
+              _isSignUp ? tr('CREATE WHOLESALE PORTAL', '卸売アカウントを作成する') : tr('LOG IN', 'ログインする'),
               style: const TextStyle(
                 fontFamily: 'Plus Jakarta Sans',
                 fontWeight: FontWeight.bold,
@@ -291,9 +297,9 @@ class _AuthScreenState extends State<AuthScreen> {
           Center(
             child: TextButton.icon(
               icon: const Icon(Icons.arrow_back, size: 16),
-              label: const Text(
-                'Back to Catalog',
-                style: TextStyle(
+              label: Text(
+                tr('Back to Catalog', 'カタログに戻る'),
+                style: const TextStyle(
                   fontFamily: 'Plus Jakarta Sans',
                   fontWeight: FontWeight.bold,
                 ),
@@ -334,10 +340,10 @@ class _AuthScreenState extends State<AuthScreen> {
           ],
         ),
         const SizedBox(height: 32),
-        const Text(
-          'Account Request Received',
+        Text(
+          tr('Account Request Received', 'アカウント申請を受け付けました'),
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'Cormorant Garamond',
             color: Color(0xFF1F3A2E),
             fontSize: 28,
@@ -347,8 +353,14 @@ class _AuthScreenState extends State<AuthScreen> {
         const SizedBox(height: 12),
         Text(
           _isSignUp
-              ? 'Thank you for registering. A confirmation link has been sent to ${_emailController.text}.\n\nOur team is reviewing your business details for "${_companyController.text}". Wholesale price access is usually granted within 2-4 business hours.'
-              : 'Welcome back! Your secure login has been verified. You will be redirected shortly.',
+              ? tr(
+                  'Thank you for registering. A confirmation link has been sent to ${_emailController.text}.\n\nOur team is reviewing your business details for "${_companyController.text}". Wholesale price access is usually granted within 2-4 business hours.',
+                  'ご登録いただきありがとうございます。確認リンクが ${_emailController.text} に送信されました。\n\n現在、私たちのチームが "${_companyController.text}" のビジネス詳細を確認しています。卸売価格へのアクセス権は、通常2〜4営業時間以内に付与されます。',
+                )
+              : tr(
+                  'Welcome back! Your secure login has been verified. You will be redirected shortly.',
+                  'おかえりなさい！安全なログインが確認されました。間もなくリダイレクトされます。',
+                ),
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontFamily: 'Plus Jakarta Sans',
@@ -370,9 +382,9 @@ class _AuthScreenState extends State<AuthScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Text(
-            'RETURN TO PRODUCT CATALOG',
-            style: TextStyle(
+          child: Text(
+            tr('RETURN TO PRODUCT CATALOG', '商品カタログに戻る'),
+            style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
               fontWeight: FontWeight.bold,
               fontSize: 13,
