@@ -35,19 +35,17 @@
             
             <nav class="nav-menu" id="nav-menu">
                 <ul>
-                    <li><a href="#home" class="nav-link active" data-tab-main="farms">Home</a></li>
-                    <li><a href="#about" class="nav-link" data-tab-main="farms">About</a></li>
-                    <li><a href="#products" class="nav-link" data-tab-main="farms">Products</a></li>
-                    <li><a href="#why-choose-us" class="nav-link" data-tab-main="farms">Why Us</a></li>
-                    <li><a href="#textiles" class="nav-link" id="main-nav-textiles" data-tab-main="textiles">Textiles</a></li>
-                    <li><a href="#contact" class="nav-link" data-tab-main="farms">Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#why-choose-us" class="nav-link">Why Us</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
             
             <div class="header-actions">
-                <div class="lang-switch-container">
-                    <button class="btn-lang-switch" id="lang-switch-btn" data-lang="en">JA</button>
-                </div>
                 <a href="#contact" class="btn btn-nav-cta">Inquire Now</a>
                 <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
                     <span class="bar"></span>
@@ -63,16 +61,14 @@
         <button class="drawer-close" id="drawer-close" aria-label="Close Drawer">&times;</button>
         <div class="drawer-content">
             <a href="#home" class="drawer-logo">NALLAM FARMS</a>
-            <div class="lang-switch-container" style="margin: 1.5rem 0; padding: 0 1.5rem;">
-                <button class="btn-lang-switch" id="mobile-lang-switch-btn" data-lang="en" style="width: 100%; text-align: center;">日本語</button>
-            </div>
             <ul class="drawer-links">
-                <li><a href="#home" class="drawer-link" data-tab-main="farms">Home</a></li>
-                <li><a href="#about" class="drawer-link" data-tab-main="farms">About</a></li>
-                <li><a href="#products" class="drawer-link" data-tab-main="farms">Products & Services</a></li>
-                <li><a href="#why-choose-us" class="drawer-link" data-tab-main="farms">Why Choose Us</a></li>
-                <li><a href="#textiles" class="drawer-link" id="drawer-nav-textiles" data-tab-main="textiles">NALLAM</a></li>
-                <li><a href="#contact" class="drawer-link" data-tab-main="farms">Contact Us</a></li>
+                <li><a href="#home" class="drawer-link">Home</a></li>
+                <li><a href="#about" class="drawer-link">About</a></li>
+                <li><a href="#products" class="drawer-link">Products & Services</a></li>
+                <li><a href="#why-choose-us" class="drawer-link">Why Choose Us</a></li>
+                <li><a href="#experience" class="drawer-link">Farm Experience</a></li>
+                <li><a href="#testimonials" class="drawer-link">Client Reviews</a></li>
+                <li><a href="#contact" class="drawer-link">Contact Us</a></li>
             </ul>
             <div class="drawer-footer">
                 <p>Pure food from trusted farms.</p>
@@ -82,8 +78,6 @@
     </div>
 
     <main>
-      <div id="farms-tab-content" class="main-tab-content active">
-        <!-- 1. HERO SECTION -->
         <section class="hero-section" id="home">
             <div class="hero-bg-container">
                 <img src="assets/hero_background.png" alt="Nallam Farms Panoramic Field" class="hero-bg-img">
@@ -244,22 +238,13 @@
         <section class="products-section section-padding" id="products">
             <div class="container text-center max-w-lg">
                 <span class="section-subtitle">Premium Categories</span>
-                <h2 class="section-title">Naturally Sourced Offerings</h2>
-                <p class="section-description">Every category represents our dedication to organic freshness, traditional quality, and reliable supply. Hand-selected for retail and wholesale partners.</p>
-            </div>
-
-            <!-- Products Sub-Tabs Switcher -->
-            <div class="products-tab-container container reveal-item-up">
-                <div class="products-tabs">
-                    <button class="prod-tab-btn active" data-prod-tab="home">Home (All Products)</button>
-                    <button class="prod-tab-btn" data-prod-tab="farms">Farms Products</button>
-                    <button class="prod-tab-btn" data-prod-tab="textiles">Textile Products</button>
-                </div>
+                <h2 class="section-title">Naturally Sourced Farm Offerings</h2>
+                <p class="section-description">Every category represents our dedication to freshness, traditional standards, and reliable supply. Hand-selected for retail and wholesale culinary buyers.</p>
             </div>
             
             <div class="container products-grid">
                 <!-- Card 1 -->
-                <div class="product-card reveal-item-up" data-category="farms">
+                <div class="product-card reveal-item-up">
                     <div class="product-img-wrapper">
                         <img src="assets/category_organic.png" alt="Organic Farm Products" class="product-img">
                         <div class="product-tag">Premium</div>
@@ -272,7 +257,7 @@
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.1s;">
+                <div class="product-card reveal-item-up" style="animation-delay: 0.1s;">
                     <div class="product-img-wrapper">
                         <img src="assets/category_produce.png" alt="Agricultural Produce" class="product-img">
                         <div class="product-tag">Natural</div>
@@ -285,7 +270,7 @@
                 </div>
                 
                 <!-- Card 3 -->
-                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.2s;">
+                <div class="product-card reveal-item-up" style="animation-delay: 0.2s;">
                     <div class="product-img-wrapper">
                         <img src="assets/groundnut.png" alt="Natural Food Products" class="product-img">
                         <div class="product-tag">Pure</div>
@@ -298,7 +283,7 @@
                 </div>
                 
                 <!-- Card 4 -->
-                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.3s;">
+                <div class="product-card reveal-item-up" style="animation-delay: 0.3s;">
                     <div class="product-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80" alt="Wholesale Supply" class="product-img">
                         <div class="product-tag">Wholesale</div>
@@ -311,7 +296,7 @@
                 </div>
                 
                 <!-- Card 5 -->
-                <div class="product-card reveal-item-up" data-category="farms" style="animation-delay: 0.4s;">
+                <div class="product-card reveal-item-up" style="animation-delay: 0.4s;">
                     <div class="product-img-wrapper">
                         <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80" alt="Farm Fresh Goods" class="product-img">
                         <div class="product-tag">Fresh Daily</div>
@@ -323,128 +308,16 @@
                     </div>
                 </div>
 
-                <!-- Card 6: Textile product -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.1s;">
+                <!-- Card 6 -->
+                <div class="product-card reveal-item-up" style="animation-delay: 0.5s;">
                     <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/aqua_blue_placemat.png" alt="Aqua Blue Woven Placemat" class="product-img">
-                        <div class="product-tag">Textiles</div>
+                        <img src="textiles_app/assets/images/aqua_blue_placemat.png" alt="Nallam Textiles" class="product-img">
+                        <div class="product-tag">New Textiles</div>
                     </div>
                     <div class="product-info">
-                        <span class="product-category-tag">Table Linen</span>
-                        <h3>Aqua Blue Ribbed Woven Placemat</h3>
-                        <p>100% yarn-dyed pure cotton ribbed placemat. Elegant bordered trim, heavy weight weave protecting dining tables.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="aqua-blue-placemat">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 7: Textile product -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.2s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/cushion_cover.png" alt="Off White / Green Striped Cushion Cover" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Cushions</span>
-                        <h3>Off White & Forest Green Cushion Cover</h3>
-                        <p>Woven cotton canvas throw pillow cover with YKK invisible side zipper closure and matching piped borders.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="cushion-cover">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 8: Textile product -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.3s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/upholstery_fabric.png" alt="Barnyard Striped Upholstery Fabric" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Fabrics</span>
-                        <h3>Barnyard Striped Upholstery Fabric</h3>
-                        <p>Heavy-duty pure cotton double-ply yarn fabric. Premium abrasion resistance for sofa, drapery, and headboards.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="upholstery-fabric">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 9: Textile product -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.4s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/apron.png" alt="Organic Cotton Kitchen Apron" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Kitchen Linen</span>
-                        <h3>Organic Pure Cotton Kitchen Apron</h3>
-                        <p>Adjustable neck straps and waist ties with double front utility pockets, heavy-duty stain-resistant canvas.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="apron">View Details</a>
-                    </div>
-                </div>
-                <!-- Card 10: Textile product (Pet Bed) -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.5s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/pet_bed.png" alt="Navy Checkered Pet Bed" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Pet Linen</span>
-                        <h3>Navy Checkered Cotton Pet Bed</h3>
-                        <p>Durable 100% heavy cotton canvas pet bed. Removable zippered cover and supportive eco-polyester filling.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="pet-bed">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 11: Textile product (Pet Mat) -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.6s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/pet_mat.png" alt="Checkered Cotton Pet Mat" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Pet Linen</span>
-                        <h3>Blue & Off White Checkered Pet Mat</h3>
-                        <p>Premium yarn-dyed cotton floor cooling mat. Highly durable, fully machine washable, ideal for crates and carriers.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="pet-mat">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 12: Textile product (Snuffle Mat) -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.7s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/snuffle_mat.png" alt="Play & Forage Snuffle Dog Mat" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Pet Linen</span>
-                        <h3>Multicolored Snuffle Forage Dog Mat</h3>
-                        <p>Interactive slow-feeding snuffle mat. Conceals treats in dense cotton folds to stimulate foraging instincts.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="snuffle-mat">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 13: Textile product (Rattan Canopy Bed) -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.8s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/pet_canopy_bed.png" alt="Foldable Rattan Dog Canopy Bed" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Pet Linen</span>
-                        <h3>Foldable Rattan Dog Canopy Bed</h3>
-                        <p>Premium hand-woven PE rattan dog sofa bed with foldable weather-resistant canopy, elevated base, and customizable cushions.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="rattan-canopy-bed">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Card 14: Textile product (Cat Cooling Bed) -->
-                <div class="product-card reveal-item-up textile-card" data-category="textiles" style="animation-delay: 0.9s;">
-                    <div class="product-img-wrapper">
-                        <img src="textiles_app/assets/images/cat_cooling_bed.png" alt="Ultimate Cooling Gel Nest Cat Bed" class="product-img">
-                        <div class="product-tag">Textiles</div>
-                    </div>
-                    <div class="product-info">
-                        <span class="product-category-tag">Pet Linen</span>
-                        <h3>Ultimate Cooling Nest Cat Bed</h3>
-                        <p>Instant cooling gel-infused mesh bed with orthopedic bumper rim, high-density comfort foam, and durable Oxford shell.</p>
-                        <a href="javascript:void(0)" class="btn btn-card-cta view-textile-btn" data-product-id="cat-cooling-bed">View Details</a>
+                        <h3>Nallam</h3>
+                        <p>Premium 100% yarn-dyed pure cotton table linen, placemats, runner collections, curtains, and custom home textile products.</p>
+                        <a href="textiles_app/build/web/index.html" class="btn btn-card-cta">Explore Textiles</a>
                     </div>
                 </div>
             </div>
@@ -872,12 +745,6 @@
                 </div>
             </div>
         </section>
-      </div>
-
-      <!-- TEXTILES TAB VIEW (Nallam Textiles Flutter app) -->
-      <div id="textiles-tab-content" class="main-tab-content" style="display: none;">
-          <iframe id="textiles-iframe" class="textiles-iframe-container" src="textiles_app/build/web/index.html" title="Nallam Textiles Web Catalog"></iframe>
-      </div>
     </main>
 
     <!-- 10. FOOTER -->
