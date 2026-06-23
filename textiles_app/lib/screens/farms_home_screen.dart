@@ -691,7 +691,16 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 fontSize: 16,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              final messageText = localeManager.isJapanese
+                  ? 'ナラム・ファーム様、オーガニック農産物について問い合わせいたします。'
+                  : 'Hi Nallam Farms, I am interested in inquiring about your organic farm products.';
+              final message = Uri.encodeComponent(messageText);
+              final url = 'https://wa.me/919524142311?text=$message';
+              if (kIsWeb) {
+                html.window.open(url, '_blank');
+              }
+            },
           ),
         ],
       ),
