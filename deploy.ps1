@@ -1,14 +1,15 @@
 # Nallam Farms Root Deployment Automation Script (PowerShell)
-# This script compiles the Flutter web application and deploys it to the root of the gh-pages branch.
+# This script compiles the Flutter web application and deploys it directly to the root of the main branch for Vercel hosting.
 
 $ErrorActionPreference = "Stop"
 
-# Get current branch to restore it at the end
+# Get current branch to restore/verify
 $currentBranch = (git symbolic-ref --short HEAD).Trim()
 Write-Host "Current branch detected: $currentBranch" -ForegroundColor Cyan
 
-# Define temporary path outside the repository directory to hold compile outputs
-$tempBuildPath = Join-Path (Split-Path -Parent $PSScriptRoot) "temp_nallam_web_build"
+if ($currentBranch -ne "main") {
+    Write-Error "Deployment must be run from the main branch. Aborting."
+}
 
 Write-Host "Step 1: Compiling Flutter web application..." -ForegroundColor Yellow
 cd textiles_app
@@ -22,39 +23,24 @@ if (-not (Test-Path $buildWebPath)) {
     Write-Error "Flutter web build output not found at $buildWebPath. Aborting."
 }
 
-Write-Host "Step 2: Copying build output to temporary directory..." -ForegroundColor Yellow
-if (Test-Path $tempBuildPath) {
-    Remove-Item -Path $tempBuildPath -Recurse -Force
-}
-New-Item -Path $tempBuildPath -ItemType Directory > $null
-Copy-Item -Path "$buildWebPath\*" -Destination $tempBuildPath -Recurse -Force
-
-Write-Host "Step 3: Switching to deployment branch (gh-pages)..." -ForegroundColor Yellow
-git checkout -f gh-pages
-
-Write-Host "Step 4: Cleaning up old branch contents..." -ForegroundColor Yellow
-# Use git to remove all tracked files on the branch
-git rm -r -f -q .
-# Clean up any leftover untracked files/folders gracefully (ignoring locked folders and the script itself)
-Get-ChildItem -Path $PSScriptRoot -Exclude .git, deploy.ps1 | ForEach-Object {
-    Remove-Item -Path $_.FullName -Recurse -Force -ErrorAction SilentlyContinue
+Write-Host "Step 2: Cleaning old compiled files from root..." -ForegroundColor Yellow
+$compiledItems = @("index.html", "flutter.js", "flutter_bootstrap.js", "flutter_service_worker.js", "main.dart.js", "version.json", "assets", "canvaskit", "farms", ".last_build_id")
+foreach ($item in $compiledItems) {
+    $destPath = Join-Path $PSScriptRoot $item
+    if (Test-Path $destPath) {
+        Remove-Item -Path $destPath -Recurse -Force -ErrorAction SilentlyContinue
+    }
 }
 
-Write-Host "Step 5: Moving compiled files to root..." -ForegroundColor Yellow
-Copy-Item -Path "$tempBuildPath\*" -Destination $PSScriptRoot -Recurse -Force
+Write-Host "Step 3: Copying new compiled files to root..." -ForegroundColor Yellow
+Copy-Item -Path "$buildWebPath\*" -Destination $PSScriptRoot -Recurse -Force
 
-Write-Host "Step 6: Cleaning up temporary directory..." -ForegroundColor Yellow
-Remove-Item -Path $tempBuildPath -Recurse -Force
-
-Write-Host "Step 7: Committing deployment updates..." -ForegroundColor Yellow
+Write-Host "Step 4: Committing deployment updates..." -ForegroundColor Yellow
 git add -A
 # Allow commit to fail/succeed silently if there are no new changes
-git commit -m "Deploy Flutter web app to domain root" -a --allow-empty
+git commit -m "Deploy compiled Flutter web app to domain root on main" -a --allow-empty
 
-Write-Host "Step 8: Restoring original development branch ($currentBranch)..." -ForegroundColor Yellow
-git checkout $currentBranch
+Write-Host "Step 5: Pushing updates to GitHub..." -ForegroundColor Yellow
+git push origin main
 
-Write-Host "`nDeployment preparation complete! 🎉" -ForegroundColor Green
-Write-Host "You can now push the updates to GitHub using:" -ForegroundColor Green
-Write-Host "  git push origin main" -ForegroundColor Yellow
-Write-Host "  git push origin gh-pages" -ForegroundColor Yellow
+Write-Host "`nDeployment complete! 🎉 Vercel will now deploy the update." -ForegroundColor Green
