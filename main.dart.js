@@ -93815,7 +93815,7 @@ $S:0}
 A.am1.prototype={
 $0(){var s=window
 s.toString
-B.dq.r9(s,"mailto:info@nallamfarms.com?subject=Inquiry%20to%20Nallam%20Farms","_self")},
+B.dq.r9(s,"mailto:info@nallam-farms.com?subject=Inquiry%20to%20Nallam%20Farms","_self")},
 $S:0}
 A.am2.prototype={
 $0(){var s=A.rk(B.kJ,$.b9().a.a==="ja"?"\u30ca\u30e9\u30e0\u30fb\u30d5\u30a1\u30fc\u30e0\u69d8\u3001\u30aa\u30fc\u30ac\u30cb\u30c3\u30af\u8fb2\u7523\u7269\u306b\u3064\u3044\u3066\u554f\u3044\u5408\u308f\u305b\u3044\u305f\u3057\u307e\u3059\u3002":u.l,B.ag,!1),r=window
@@ -94394,7 +94394,7 @@ q=l.a==="ja"
 p=A.am(q?"\u9023\u7d61\u5148\uff06\u30b5\u30dd\u30fc\u30c8":"Contact & Support",n,n,n,n,B.m8,n,n)
 o=q?"\u96fb\u8a71":"Phone"
 q=q?"\u30e1\u30fc\u30eb":"Email"
-q=A.Dw(B.a0g,A.b([m,s,r,A.bA(A.b([p,B.bl,new A.EF(o+": +919789423115",n),new A.EF(q+": info@nallamfarms.com",n)],k),B.U,B.w,B.A)],k),32,48)
+q=A.Dw(B.a0g,A.b([m,s,r,A.bA(A.b([p,B.bl,new A.EF(o+": +919789423115",n),new A.EF(q+": info@nallam-farms.com",n)],k),B.U,B.w,B.A)],k),32,48)
 return A.be(n,A.bA(A.b([q,B.cO,B.GK,B.cb,A.am(l.a==="ja"?"\xa9 2026 NALLAM GROUP. All Rights Reserved. \u7d14\u7c8b\u3055\u3068\u4fe1\u983c\u3092\u8fbc\u3081\u3066\u3002":"\xa9 2026 NALLAM GROUP. All Rights Reserved. Crafted with Purity & Trust.",n,n,n,n,B.WR,B.b8,n)],k),B.P,B.w,B.A),B.m,B.H,n,n,n,n,n,n,B.kh,n,n,n)},
 $S:196}
 A.a0B.prototype={

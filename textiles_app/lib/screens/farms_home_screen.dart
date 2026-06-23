@@ -748,7 +748,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 ),
                 onPressed: () {
                   if (kIsWeb) {
-                    html.window.open('mailto:info@nallamfarms.com?subject=Inquiry%20to%20Nallam%20Farms', '_self');
+                    html.window.open('mailto:info@nallam-farms.com?subject=Inquiry%20to%20Nallam%20Farms', '_self');
                   }
                 },
               ),

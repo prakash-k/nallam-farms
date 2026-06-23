@@ -140,7 +140,7 @@ class AppFooter extends StatelessWidget {
                       ),
                       const SizedBox(height: 12),
                       _FooterText(title: '${tr('Phone', '電話')}: +919789423115'),
-                      _FooterText(title: '${tr('Email', 'メール')}: info@nallamfarms.com'),
+                      _FooterText(title: '${tr('Email', 'メール')}: info@nallam-farms.com'),
                     ],
                   ),
                 ],
