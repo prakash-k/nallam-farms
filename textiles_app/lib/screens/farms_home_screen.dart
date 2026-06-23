@@ -436,8 +436,8 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       icon: Icons.eco_outlined,
                       title: tr('What We Have', '私たちが保有するもの'),
                       description: tr(
-                        '100+ acres of certified organic farmlands in the foothills of Coimbatore, Tamil Nadu, and a fully integrated, state-of-the-art handloom and yarn-dyed home textile manufacturing unit.',
-                        'タミル・ナードゥ州コインバトールの麓にある100エーカー以上の認証オーガニック農地、および完全に統合された最先端の手織り・先染めホームテキスタイル製造ユニット。',
+                        '100+ acres of certified organic farmlands in the foothills of Karur, Tamil Nadu, and a fully integrated, state-of-the-art handloom and yarn-dyed home textile manufacturing unit.',
+                        'タミル・ナードゥ州カルールの麓にある100エーカー以上の認証オーガニック農地、および完全に統合された最先端の手織り・先染めホームテキスタイル製造ユニット。',
                       ),
                     ).animate().fadeIn(delay: 400.ms).slideY(begin: 0.1, end: 0.0),
                     const SizedBox(height: 24),
@@ -459,7 +459,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       title: tr('Our Location', '所在地'),
                       description: tr(
                         '158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India.(Click to view map)',
-                        'インド、タミル・ナードゥ州コインバトール\nメイン農場＆オフィス住所：158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India (クリックして地図を表示)',
+                        'インド、タミル・ナードゥ州カルール\nメイン農場＆オフィス住所：158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India (クリックして地図を表示)',
                       ),
                       onTap: () {
                         if (kIsWeb) {
