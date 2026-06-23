@@ -58,13 +58,13 @@ const RESOURCES = {"assets/AssetManifest.bin": "cd8edda7af1f81c278409aae36165b12
 "farms/assets/nallam_founder.jpeg": "c7546c74c3347ae8114615c0db8bd1af",
 "farms/assets/sunset.png": "7a15bc6e08c8c5d9671ffbeef4889bde",
 "farms/css/style.css": "bc800aa4da78d7b6b18d21f9b4c1f0d8",
-"farms/index.html": "d5c1e96543973d1967a5773ff2889a07",
-"farms/js/main.js": "6646a2dafff45daba1c090bf26964904",
+"farms/index.html": "b3024657668ac79b705a69479e5f63e5",
+"farms/js/main.js": "372dfddf2dee3d69955e6747fd3128c9",
 "flutter.js": "383e55f7f3cce5be08fcf1f3881f585c",
-"flutter_bootstrap.js": "fe55f0d08cc27df0b28b410211d727d2",
+"flutter_bootstrap.js": "06ddc24fedd79ae9ad8e0f3f78181901",
 "index.html": "fd75b2b54c22e25a3ebdf795231448ab",
 "/": "fd75b2b54c22e25a3ebdf795231448ab",
-"main.dart.js": "3b6cda334110d73715790b0819910d60",
+"main.dart.js": "3d25bb95290fcf08c294e2c6e3db9444",
 "version.json": "06eb48782ba43fb1b72c777e5a60fe31"};
 // The application shell files that are downloaded before a service worker can
 // start.
