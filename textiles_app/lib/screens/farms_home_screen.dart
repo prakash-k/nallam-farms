@@ -951,17 +951,17 @@ class _WhatsAppIcon extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: size * 0.15,
-            left: size * 0.15,
-            right: size * 0.15,
-            bottom: size * 0.20,
+            top: size * 0.16,
+            left: size * 0.16,
+            right: size * 0.16,
+            bottom: size * 0.22,
             child: FittedBox(
               fit: BoxFit.contain,
               child: Transform.rotate(
                 angle: -0.15, // tilt the phone icon slightly to match WhatsApp logo
                 child: const Icon(
                   Icons.call,
-                  color: Color(0xFF25D366),
+                  color: Colors.white, // solid white phone receiver!
                 ),
               ),
             ),
@@ -975,35 +975,42 @@ class _WhatsAppIcon extends StatelessWidget {
 class _WhatsAppBubblePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    final double strokeWidth = size.width * 0.09;
     final paint = Paint()
       ..color = Colors.white
-      ..style = PaintingStyle.fill
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round
       ..isAntiAlias = true;
 
     final path = Path();
     final double cx = size.width / 2;
     final double cy = size.height / 2;
-    final double r = size.width * 0.36;
+    final double r = size.width * 0.35 - (strokeWidth / 2);
 
-    // Draw main circle arc leaving gap for tail at bottom-left
-    path.addArc(Rect.fromCircle(center: Offset(cx, cy), radius: r), 2.7, 5.58);
+    final double startAngle = 2.7;
+    final double endAngle = 2.0;
+
+    // Start point of the arc
+    final double sx = cx + r * cos(startAngle);
+    final double sy = cy + r * sin(startAngle);
+    path.moveTo(sx, sy);
+
+    // Draw main circle arc
+    path.arcTo(Rect.fromCircle(center: Offset(cx, cy), radius: r), startAngle, 5.58, false);
 
     // Tail tip pointing down-left
     final double tailAngle = 2.35; // 135 degrees (bottom-left)
-    final double tx = cx + r * 1.35 * cos(tailAngle);
-    final double ty = cy + r * 1.35 * sin(tailAngle);
+    final double tx = cx + r * 1.4 * cos(tailAngle);
+    final double ty = cy + r * 1.4 * sin(tailAngle);
 
-    final double startAngle = 2.0;
-    final double endAngle = 2.7;
-
-    final double x1 = cx + r * cos(startAngle);
-    final double y1 = cy + r * sin(startAngle);
-    final double x2 = cx + r * cos(endAngle);
-    final double y2 = cy + r * sin(endAngle);
-
-    path.moveTo(x1, y1);
+    // Draw line to the tail tip
     path.lineTo(tx, ty);
-    path.lineTo(x2, y2);
+
+    // Draw line back to the start point
+    path.lineTo(sx, sy);
+
     path.close();
 
     canvas.drawPath(path, paint);
