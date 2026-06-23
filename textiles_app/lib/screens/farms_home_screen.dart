@@ -122,30 +122,39 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
               ),
             ),
           ),
-          body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            // Hero Section
-            _buildHeroSection(context),
-            
-            // Trust Strip
-            _buildTrustStrip(context),
+          body: Stack(
+            children: [
+              SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
+                  children: [
+                    // Hero Section
+                    _buildHeroSection(context),
+                    
+                    // Trust Strip
+                    _buildTrustStrip(context),
 
-            // About Section
-            _buildAboutSection(context),
+                    // About Section
+                    _buildAboutSection(context),
 
-            // Products Section
-            _buildProductsSection(context),
-            
-            // Contact Section
-            _buildContactSection(context),
+                    // Products Section
+                    _buildProductsSection(context),
+                    
+                    // Contact Section
+                    _buildContactSection(context),
 
-            // Shared Footer
-            const AppFooter(),
-          ],
-        ),
-      ),
+                    // Shared Footer
+                    const AppFooter(),
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 24,
+                right: 24,
+                child: const _WhatsAppFloatingWidget(),
+              ),
+            ],
+          ),
     );
       },
     );
@@ -633,13 +642,23 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
   Widget _buildContactSection(BuildContext context) {
     return Container(
       key: _contactKey,
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 24),
-      color: const Color(0xFFF5F1E8),
+      padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 24),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1F3A2E),
+        image: DecorationImage(
+          image: const AssetImage('web/farms/assets/farming.jpg'),
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(
+            const Color(0xFF1F3A2E).withOpacity(0.85),
+            BlendMode.srcOver,
+          ),
+        ),
+      ),
       width: double.infinity,
       child: Column(
         children: [
           Text(
-            tr('Reach Out to Us', 'お問い合わせ'),
+            tr('JOIN THE CLEAN FOOD MOVEMENT', 'クリーンフード運動に参加しよう'),
             style: const TextStyle(
               fontFamily: 'Plus Jakarta Sans',
               color: Color(0xFFC7A86B),
@@ -650,57 +669,136 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            tr('Let\'s Connect for Purity & Freshness', '純粋さと新鮮さのために繋がりましょう'),
+            tr('Experience Authentic Farm Fresh Quality', '本物の農場直送の品質を体験してください'),
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontFamily: 'Cormorant Garamond',
-              color: Color(0xFF1F3A2E),
-              fontSize: 36,
+              color: Colors.white,
+              fontSize: 38,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 24),
-          Text(
-            tr(
-              'Have a question about our retail subscriptions or commercial crop wholesale options?\nContact us today.',
-              '個人向けサブスクリプションや商業用作物の卸売オプションについてご質問はありますか？今すぐお問い合わせください。',
-            ),
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontFamily: 'Plus Jakarta Sans',
-              color: Color(0xFF555555),
-              fontSize: 16,
-              height: 1.6,
+          Container(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Text(
+              tr(
+                'Connect with NALLAM FARMS today for premium, chemical-free agricultural produce, natural food products, and wholesale supply plans custom-tailored to your standards.',
+                'プレミアムで化学物質を含まない農産物、自然食品、およびお客様の基準に合わせてカスタム調整された卸売供給計画について、今すぐナラム・ファームにご連絡ください。',
+              ),
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: 'Plus Jakarta Sans',
+                color: Color(0xFFDDDDDD),
+                fontSize: 16,
+                height: 1.6,
+              ),
             ),
           ),
           const SizedBox(height: 48),
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF25D366),
-              foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+          Wrap(
+            spacing: 20,
+            runSpacing: 16,
+            alignment: WrapAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFC7A86B),
+                  foregroundColor: const Color(0xFF1F3A2E),
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                icon: const Icon(Icons.phone, size: 20),
+                label: Text(
+                  tr('CALL NOW', '今すぐ電話'),
+                  style: const TextStyle(
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+                onPressed: () {
+                  if (kIsWeb) {
+                    html.window.open('tel:+919524142311', '_self');
+                  }
+                },
               ),
-            ),
-            icon: const Icon(Icons.chat_bubble_outline),
-            label: Text(
-              tr('WhatsApp Inquiry', 'WhatsAppでお問い合わせ'),
-              style: const TextStyle(
-                fontFamily: 'Plus Jakarta Sans',
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
+              OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  side: const BorderSide(color: Colors.white, width: 1.5),
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                icon: const Icon(Icons.email, size: 20),
+                label: Text(
+                  tr('SEND INQUIRY', 'お問い合わせ'),
+                  style: const TextStyle(
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+                onPressed: () {
+                  if (kIsWeb) {
+                    html.window.open('mailto:info@nallamfarms.com?subject=Inquiry%20to%20Nallam%20Farms', '_self');
+                  }
+                },
               ),
-            ),
-            onPressed: () {
-              final messageText = localeManager.isJapanese
-                  ? 'ナラム・ファーム様、オーガニック農産物について問い合わせいたします。'
-                  : 'Hi Nallam Farms, I am interested in inquiring about your organic farm products.';
-              final message = Uri.encodeComponent(messageText);
-              final url = 'https://wa.me/919524142311?text=$message';
-              if (kIsWeb) {
-                html.window.open(url, '_blank');
-              }
-            },
+              ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF25D366),
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                icon: const Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Icon(
+                      Icons.chat_bubble,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    Positioned(
+                      top: 11,
+                      child: Icon(
+                        Icons.phone,
+                        color: Color(0xFF25D366),
+                        size: 10,
+                      ),
+                    ),
+                  ],
+                ),
+                label: Text(
+                  tr('WHATSAPP', 'WHATSAPP'),
+                  style: const TextStyle(
+                    fontFamily: 'Plus Jakarta Sans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    letterSpacing: 1.0,
+                  ),
+                ),
+                onPressed: () {
+                  final messageText = localeManager.isJapanese
+                      ? 'ナラム・ファーム様、オーガニック農産物について問い合わせいたします。'
+                      : 'Hi Nallam Farms, I am interested in inquiring about your organic farm products.';
+                  final message = Uri.encodeComponent(messageText);
+                  final url = 'https://wa.me/919524142311?text=$message';
+                  if (kIsWeb) {
+                    html.window.open(url, '_blank');
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),
@@ -847,6 +945,236 @@ class _DrawerLink extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _WhatsAppFloatingWidget extends StatefulWidget {
+  const _WhatsAppFloatingWidget();
+
+  @override
+  State<_WhatsAppFloatingWidget> createState() => _WhatsAppFloatingWidgetState();
+}
+
+class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
+  bool _isOpen = false;
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        if (_isOpen) ...[
+          Container(
+            width: 320,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.15),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Header
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF1F3A2E),
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage('web/farms/assets/nallam_founder.jpeg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Nallam Farms',
+                              style: TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            Text(
+                              tr('Typically replies in minutes', '通常数分以内に返信します'),
+                              style: const TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: Color(0xFF8DC0A2),
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const Icon(Icons.close, color: Colors.white, size: 20),
+                        onPressed: () {
+                          setState(() {
+                            _isOpen = false;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                // Body
+                Container(
+                  color: const Color(0xFFF4F7F5),
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.02),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Nallam Farms',
+                              style: TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              tr(
+                                'Hi! How can we help you today?',
+                                'こんにちは！どのようなご用件でしょうか？',
+                              ),
+                              style: const TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
+                                color: Color(0xFF333333),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF25D366),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 0,
+                        ),
+                        icon: const Icon(Icons.send, size: 16),
+                        label: Text(
+                          tr('Start Chat', 'チャットを開始する'),
+                          style: const TextStyle(
+                            fontFamily: 'Plus Jakarta Sans',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                        onPressed: () {
+                          final messageText = localeManager.isJapanese
+                              ? 'ナラム・ファーム様、オーガニック農産物について問い合わせいたします。'
+                              : 'Hi Nallam Farms, I am interested in inquiring about your organic farm products.';
+                          final message = Uri.encodeComponent(messageText);
+                          final url = 'https://wa.me/919524142311?text=$message';
+                          if (kIsWeb) {
+                            html.window.open(url, '_blank');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+        MouseRegion(
+          onEnter: (_) => setState(() => _isHovered = true),
+          onExit: (_) => setState(() => _isHovered = false),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _isOpen = !_isOpen;
+              });
+            },
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
+              width: 56,
+              height: 56,
+              decoration: BoxDecoration(
+                color: const Color(0xFF25D366),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF25D366).withOpacity(_isHovered ? 0.4 : 0.25),
+                    blurRadius: _isHovered ? 12 : 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: const Stack(
+                alignment: Alignment.center,
+                children: [
+                  Icon(
+                    Icons.chat_bubble,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                  Positioned(
+                    top: 15,
+                    child: Icon(
+                      Icons.phone,
+                      color: Color(0xFF25D366),
+                      size: 15,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
