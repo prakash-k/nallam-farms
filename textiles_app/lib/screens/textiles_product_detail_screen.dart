@@ -91,7 +91,7 @@ class _TextilesProductDetailScreenState extends State<TextilesProductDetailScree
         : ' Please provide catalog prices and wholesale lead times.';
     
     final message = Uri.encodeComponent(messageText);
-    final url = 'https://wa.me/917591919910?text=$message';
+    final url = 'https://wa.me/919524142311?text=$message';
     if (kIsWeb) {
       html.window.open(url, '_blank');
     }

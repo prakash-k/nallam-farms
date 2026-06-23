@@ -93485,7 +93485,7 @@ o=r?"\u5b9f\u7e3e":"What We Have Done"
 o=A.jc(A.fH(A.fc(n.Mx(r?"1\u4e07\u4e16\u5e2f\u4ee5\u4e0a\u306e\u5bb6\u5ead\u306b\u7121\u5316\u5b66\u8fb2\u85ac\u306e\u4f1d\u7d71\u7684\u306a\u7a40\u7269\u3084\u91ce\u83dc\u306e\u53ce\u7a6b\u3068\u6d41\u901a\u3092\u6210\u529f\u3055\u305b\u3001\u53b3\u3057\u3044\u4e16\u754c\u5e02\u5834\u306b\u8f38\u51fa\u3055\u308c\u308b\u30d7\u30ec\u30df\u30a2\u30e0\u306a\u5148\u67d3\u3081\u30ea\u30cd\u30f3\u3092\u88fd\u9020\u3057\u3066\u304d\u307e\u3057\u305f\u3002":"Successfully harvested and distributed chemical-free heritage grains and vegetables to over 10,000 families, and manufactured premium yarn-dyed linens exported to discerning global markets.",B.Ia,o)),A.bF(5e5,0,0),m),0.1,m,0)
 e=e.a==="ja"
 r=e?"\u6240\u5728\u5730":"Our Location"
-e=e?"\u30a4\u30f3\u30c9\u3001\u30bf\u30df\u30eb\u30fb\u30ca\u30fc\u30c9\u30a5\u5dde\u30b3\u30a4\u30f3\u30d0\u30c8\u30fc\u30eb\n\u30e1\u30a4\u30f3\u8fb2\u5834\uff06\u30aa\u30d5\u30a3\u30b9\u4f4f\u6240\uff1aNallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (\u30af\u30ea\u30c3\u30af\u3057\u3066\u5730\u56f3\u3092\u8868\u793a)":"Coimbatore, Tamil Nadu, India\nMain Farm & Office Address: Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (Click to view map)"
+e=e?"\u30a4\u30f3\u30c9\u3001\u30bf\u30df\u30eb\u30fb\u30ca\u30fc\u30c9\u30a5\u5dde\u30b3\u30a4\u30f3\u30d0\u30c8\u30fc\u30eb\n\u30e1\u30a4\u30f3\u8fb2\u5834\uff06\u30aa\u30d5\u30a3\u30b9\u4f4f\u6240\uff1a158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India (\u30af\u30ea\u30c3\u30af\u3057\u3066\u5730\u56f3\u3092\u8868\u793a)":"158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India.(Click to view map)"
 return A.bp(m,A.eQ(A.bp(m,A.aLS(A.b([j,i,A.fg(A.bL(A.b([g,B.bf,f,B.bG,s,B.iE,q,B.bG,o,B.bG,A.jc(A.fH(A.fc(n.My(e,B.I6,new A.alK(),r)),A.bF(6e5,0,0),m),0.1,m,0)],p),B.X,B.A,B.B),h,m)],p),B.X,k,m,B.A,B.B,m,m,B.cs),B.o,m,B.Cy,m,m,m,m,m,m,m,m,m),m,m),B.o,B.ch,m,m,m,m,n.e,m,B.kg,m,m,m)},
 My(a,b,c,d){var s,r,q,p=null,o=A.n(13,31,58,46),n=A.bY(10)
 n=A.bp(p,A.a8o(b,B.a0,24),B.o,p,p,new A.bR(o,p,p,n,p,p,B.V),p,p,p,p,B.H2,p,p,p)
@@ -94018,7 +94018,7 @@ o=r.f
 n+=q==="ja"?" \u9078\u629e\u3055\u308c\u305f\u751f\u5730: "+r.E_(o)+"\u3001\u9078\u629e\u3055\u308c\u305f\u4e2d\u7dbf: "+r.E0(r.r)+"\u3002":" Selected Fabric: "+o+", Selected Filling: "+r.r+"."}s=A.H7(B.Kh,n+(p.a==="ja"?" \u30ab\u30bf\u30ed\u30b0\u4fa1\u683c\u3068\u5378\u58f2\u306e\u30ea\u30fc\u30c9\u30bf\u30a4\u30e0\u3092\u6559\u3048\u3066\u304f\u3060\u3055\u3044\u3002":" Please provide catalog prices and wholesale lead times."),B.ap,!1)
 r=window
 r.toString
-B.mh.X_(r,"https://wa.me/917591919910?text="+s,"_blank")
+B.mh.X_(r,"https://wa.me/919524142311?text="+s,"_blank")
 return null},
 $S:0}
 A.as6.prototype={
@@ -94078,7 +94078,7 @@ q=l.a==="ja"
 p=A.aq(q?"\u9023\u7d61\u5148\uff06\u30b5\u30dd\u30fc\u30c8":"Contact & Support",n,n,n,n,B.m2,n,n)
 o=q?"\u96fb\u8a71":"Phone"
 q=q?"\u30e1\u30fc\u30eb":"Email"
-q=A.Qm(B.a_K,A.b([m,s,r,A.bL(A.b([p,B.bf,new A.EA(o+": +91 75 9191 9910",n),new A.EA(q+": info@nallamfarms.com",n)],k),B.X,B.A,B.B)],k),32,48)
+q=A.Qm(B.a_K,A.b([m,s,r,A.bL(A.b([p,B.bf,new A.EA(o+": +919789423115",n),new A.EA(q+": info@nallamfarms.com",n)],k),B.X,B.A,B.B)],k),32,48)
 return A.bp(n,A.bL(A.b([q,B.cN,B.Gu,B.cM,A.aq(l.a==="ja"?"\xa9 2026 NALLAM GROUP. All Rights Reserved. \u7d14\u7c8b\u3055\u3068\u4fe1\u983c\u3092\u8fbc\u3081\u3066\u3002":"\xa9 2026 NALLAM GROUP. All Rights Reserved. Crafted with Purity & Trust.",n,n,n,n,B.Wm,B.bh,n)],k),B.R,B.A,B.B),B.o,B.K,n,n,n,n,n,n,B.kf,n,n,n)},
 $S:196}
 A.a0i.prototype={

@@ -458,8 +458,8 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       icon: Icons.location_on_outlined,
                       title: tr('Our Location', '所在地'),
                       description: tr(
-                        'Coimbatore, Tamil Nadu, India\nMain Farm & Office Address: Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (Click to view map)',
-                        'インド、タミル・ナードゥ州コインバトール\nメイン農場＆オフィス住所：Nallam Farms Estate, Plot No. 42, Green Agro Valley, Near River Basin, Coimbatore - 641001 (クリックして地図を表示)',
+                        '158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India.(Click to view map)',
+                        'インド、タミル・ナードゥ州コインバトール\nメイン農場＆オフィス住所：158 Muniyappanur Vangal East, Manmangalam, Tamil Nadu 639004, India (クリックして地図を表示)',
                       ),
                       onTap: () {
                         if (kIsWeb) {
