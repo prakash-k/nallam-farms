@@ -760,24 +760,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                icon: const Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Icon(
-                      Icons.chat_bubble,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    Positioned(
-                      top: 11,
-                      child: Icon(
-                        Icons.phone,
-                        color: Color(0xFF25D366),
-                        size: 10,
-                      ),
-                    ),
-                  ],
-                ),
+                icon: const _WhatsAppIcon(size: 22),
                 label: Text(
                   tr('WHATSAPP', 'WHATSAPP'),
                   style: const TextStyle(
@@ -947,6 +930,86 @@ class _DrawerLink extends StatelessWidget {
       ),
     );
   }
+}
+
+class _WhatsAppIcon extends StatelessWidget {
+  final double size;
+  const _WhatsAppIcon({this.size = 28});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _WhatsAppBubblePainter(),
+            ),
+          ),
+          Positioned(
+            top: size * 0.15,
+            left: size * 0.15,
+            right: size * 0.15,
+            bottom: size * 0.20,
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: Transform.rotate(
+                angle: -0.15, // tilt the phone icon slightly to match WhatsApp logo
+                child: const Icon(
+                  Icons.call,
+                  color: Color(0xFF25D366),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _WhatsAppBubblePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill
+      ..isAntiAlias = true;
+
+    final path = Path();
+    final double cx = size.width / 2;
+    final double cy = size.height / 2;
+    final double r = size.width * 0.36;
+
+    // Draw main circle arc leaving gap for tail at bottom-left
+    path.addArc(Rect.fromCircle(center: Offset(cx, cy), radius: r), 2.7, 5.58);
+
+    // Tail tip pointing down-left
+    final double tailAngle = 2.35; // 135 degrees (bottom-left)
+    final double tx = cx + r * 1.35 * cos(tailAngle);
+    final double ty = cy + r * 1.35 * sin(tailAngle);
+
+    final double startAngle = 2.0;
+    final double endAngle = 2.7;
+
+    final double x1 = cx + r * cos(startAngle);
+    final double y1 = cy + r * sin(startAngle);
+    final double x2 = cx + r * cos(endAngle);
+    final double y2 = cy + r * sin(endAngle);
+
+    path.moveTo(x1, y1);
+    path.lineTo(tx, ty);
+    path.lineTo(x2, y2);
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class _WhatsAppFloatingWidget extends StatefulWidget {
@@ -1153,24 +1216,7 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
                   ),
                 ],
               ),
-              child: const Stack(
-                alignment: Alignment.center,
-                children: [
-                  Icon(
-                    Icons.chat_bubble,
-                    color: Colors.white,
-                    size: 28,
-                  ),
-                  Positioned(
-                    top: 15,
-                    child: Icon(
-                      Icons.phone,
-                      color: Color(0xFF25D366),
-                      size: 15,
-                    ),
-                  ),
-                ],
-              ),
+              child: const _WhatsAppIcon(size: 30),
             ),
           ),
         ),
