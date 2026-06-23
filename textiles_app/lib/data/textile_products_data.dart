@@ -74,7 +74,7 @@ final List<TextileProduct> textileProducts = [
       'Size': '33 x 45 cm',
       'Design': 'Coastal Sandy Stripe',
       'Thickness': 'Heavy Duty 320 GSM',
-      'Manufacturer': 'NALLAM TEXTILES'
+      'Manufacturer': 'NALLAM'
     },
     careInstructions: [
       'Cold wash inside a wash bag.',
