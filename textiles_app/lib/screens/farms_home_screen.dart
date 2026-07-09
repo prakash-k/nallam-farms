@@ -611,6 +611,24 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 imagePath: 'web/farms/assets/groundnut.png',
                 tag: tr('Pure', 'ピュア'),
               ),
+              _CategoryCard(
+                title: tr('Areca Leaf Dinnerware', 'アレカリーフ食器'),
+                description: tr(
+                  'Eco-friendly, 100% biodegradable plates and bowls crafted from fallen areca palm leaves. Chemical-free and food-safe.',
+                  '落下したアレカヤシの葉から作られた、環境に優しく100％生分解性のプレートやボウル。化学物質不使用で食品にも安全です。',
+                ),
+                imagePath: 'web/farms/assets/areca_plates.png',
+                tag: tr('Eco-Friendly', 'エコフレンドリー'),
+              ),
+              _CategoryCard(
+                title: tr('Coir & Coconut Products', 'コイヤ＆ココナッツ製品'),
+                description: tr(
+                  'Premium organic coco peat blocks, natural coir ropes, biodegradable coir pots, and erosion-control geotextile sheets.',
+                  '高品質の有機ココピートブロック、天然コイヤロープ、生分解性コイヤポット、侵食防止用ジオテキスタイルシート。',
+                ),
+                imagePath: 'web/farms/assets/coir_products.png',
+                tag: tr('Organic', 'オーガニック'),
+              ),
             ],
           ),
           const SizedBox(height: 48),
