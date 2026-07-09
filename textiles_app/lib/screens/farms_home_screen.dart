@@ -629,6 +629,33 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 imagePath: 'web/farms/assets/coir_products.png',
                 tag: tr('Organic', 'オーガニック'),
               ),
+              _CategoryCard(
+                title: tr('Pure Turmeric & Powder', '純粋ターメリック＆パウダー'),
+                description: tr(
+                  'High-curcumin organic turmeric roots and premium ground powder, harvested and processed naturally to preserve therapeutic value.',
+                  '高いクルクミン含有量を持つ有機ターメリック根とプレミアム粉末。健康効果を損なわないよう自然な方法で収穫・加工されています。',
+                ),
+                imagePath: 'web/farms/assets/turmeric.jpg',
+                tag: tr('100% Pure', '100% 純粋'),
+              ),
+              _CategoryCard(
+                title: tr('Premium Spices & Herbs', '高級スパイス＆ハーブ'),
+                description: tr(
+                  'A selection of handpicked, sun-dried whole spices and ground aromatics like black pepper, cardamom, cinnamon, and cloves.',
+                  'ブラックペッパー、カルダモン、シナモン、クローブなど、手摘みして天日干ししたホールスパイスと挽きたての香料。',
+                ),
+                imagePath: 'web/farms/assets/spices.png',
+                tag: tr('Aromatic', 'アロマティック'),
+              ),
+              _CategoryCard(
+                title: tr('Hydroponic Coir Substrates', '水耕栽培用コイヤ培地'),
+                description: tr(
+                  'Eco-friendly coco peat grow blocks, open-top bags, and discs designed for commercial hydroponic greenhouses and nursery cultivation.',
+                  '商業用水耕栽培温室や苗木栽培向けに設計された、環境に優しいココピートグローブロック、オープントップバッグ、ディスク。',
+                ),
+                imagePath: 'web/farms/assets/coir_grow_cubes.jpg',
+                tag: tr('Hydroponics', 'ハイドロポニックス'),
+              ),
             ],
           ),
           const SizedBox(height: 48),
