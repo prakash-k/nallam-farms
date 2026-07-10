@@ -473,7 +473,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       ),
                       onTap: () {
                         if (kIsWeb) {
-                          html.window.open('https://maps.app.goo.gl/uSCEMsqrB6uq1hde7', '_blank');
+                          html.AnchorElement(href: 'https://maps.app.goo.gl/uSCEMsqrB6uq1hde7')..target = '_blank'..click();
                         }
                       },
                     ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.1, end: 0.0),
@@ -768,7 +768,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 ),
                 onPressed: () {
                   if (kIsWeb) {
-                    html.window.open('tel:+919524142311', '_self');
+                    html.AnchorElement(href: 'tel:+919524142311').click();
                   }
                 },
               ),
@@ -793,7 +793,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 ),
                 onPressed: () {
                   if (kIsWeb) {
-                    html.window.open('mailto:info@nallam-farms.com?subject=Inquiry%20to%20Nallam%20Farms', '_self');
+                    html.AnchorElement(href: 'mailto:info@nallam-farms.com?subject=Inquiry%20to%20Nallam%20Farms').click();
                   }
                 },
               ),
@@ -823,7 +823,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                   final message = Uri.encodeComponent(messageText);
                   final url = 'https://wa.me/919524142311?text=$message';
                   if (kIsWeb) {
-                    html.window.open(url, '_blank');
+                    html.AnchorElement(href: url)..target = '_blank'..click();
                   }
                 },
               ),
@@ -1228,7 +1228,7 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
                           final message = Uri.encodeComponent(messageText);
                           final url = 'https://wa.me/919524142311?text=$message';
                           if (kIsWeb) {
-                            html.window.open(url, '_blank');
+                            html.AnchorElement(href: url)..target = '_blank'..click();
                           }
                         },
                       ),
