@@ -1287,7 +1287,7 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
             side: const BorderSide(color: Color(0xFFC7A86B), width: 1.5),
           ),
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.between,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 tr('Send Inquiry', 'お問い合わせを送信'),
