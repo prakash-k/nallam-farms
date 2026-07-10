@@ -831,6 +831,242 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
       ),
     );
   }
+
+  void _showInquiryDialog(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+    final nameController = TextEditingController();
+    final emailController = TextEditingController();
+    final companyController = TextEditingController();
+    final reasonController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF1F3A2E),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: const BorderSide(color: Color(0xFFC7A86B), width: 1.5),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                tr('Send Inquiry', 'お問い合わせを送信'),
+                style: const TextStyle(
+                  fontFamily: 'Cormorant Garamond',
+                  color: Color(0xFFC7A86B),
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.close, color: Colors.white70),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          ),
+          content: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: SizedBox(
+                width: 450,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      tr('Full Name *', 'お名前 *'),
+                      style: const TextStyle(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: nameController,
+                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
+                      decoration: _buildInputDecoration(tr('Enter your name', '名前を入力してください')),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return tr('Please enter your name', '名前を入力してください');
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      tr('Email Address *', 'メールアドレス *'),
+                      style: const TextStyle(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: emailController,
+                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
+                      decoration: _buildInputDecoration(tr('Enter your email', 'メールアドレスを入力してください')),
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return tr('Please enter your email', 'メールアドレスを入力してください');
+                        }
+                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                          return tr('Please enter a valid email', '有効なメールアドレスを入力してください');
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      tr('Company Name', '会社名'),
+                      style: const TextStyle(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: companyController,
+                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
+                      decoration: _buildInputDecoration(tr('Enter your company name', '会社名を入力してください')),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      tr('Inquiry Reason *', 'お問い合わせ理由 *'),
+                      style: const TextStyle(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: Colors.white70,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    TextFormField(
+                      controller: reasonController,
+                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
+                      maxLines: 4,
+                      decoration: _buildInputDecoration(tr('Describe your inquiry...', 'お問い合わせ内容を説明してください...')),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return tr('Please enter your inquiry reason', 'お問い合わせ理由を入力してください');
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(
+                tr('Cancel', 'キャンセル'),
+                style: const TextStyle(
+                  fontFamily: 'Plus Jakarta Sans',
+                  color: Colors.white70,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFC7A86B),
+                foregroundColor: const Color(0xFF1F3A2E),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  final name = nameController.text.trim();
+                  final email = emailController.text.trim();
+                  final company = companyController.text.trim();
+                  final reason = reasonController.text.trim();
+
+                  final subject = Uri.encodeComponent('Inquiry to Nallam Farms from $name');
+                  final body = Uri.encodeComponent(
+                    'Name: $name\n'
+                    'Email: $email\n'
+                    'Company: ${company.isEmpty ? "N/A" : company}\n\n'
+                    'Inquiry Reason:\n$reason'
+                  );
+                  final mailtoUrl = 'mailto:info@nallam-farms.com?subject=$subject&body=$body';
+
+                  if (kIsWeb) {
+                    html.AnchorElement(href: mailtoUrl).click();
+                  }
+
+                  Navigator.of(context).pop();
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        tr(
+                          'Opening email client with your inquiry...',
+                          'お問い合わせメールを開いています...',
+                        ),
+                      ),
+                      backgroundColor: const Color(0xFFC7A86B),
+                    ),
+                  );
+                }
+              },
+              child: Text(
+                tr('Submit Inquiry', '送信する'),
+                style: const TextStyle(
+                  fontFamily: 'Plus Jakarta Sans',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  InputDecoration _buildInputDecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(color: Colors.white30, fontSize: 14),
+      filled: true,
+      fillColor: Colors.white.withOpacity(0.08),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: Colors.white.withOpacity(0.2)),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: Color(0xFFC7A86B)),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: Colors.redAccent),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: Colors.redAccent),
+      ),
+      errorStyle: const TextStyle(color: Colors.redAccent),
+    );
+  }
 }
 
 class _CategoryCard extends StatefulWidget {
@@ -1267,242 +1503,6 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
           ),
         ),
       ],
-    );
-  }
-
-  void _showInquiryDialog(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final nameController = TextEditingController();
-    final emailController = TextEditingController();
-    final companyController = TextEditingController();
-    final reasonController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: const Color(0xFF1F3A2E),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: const BorderSide(color: Color(0xFFC7A86B), width: 1.5),
-          ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                tr('Send Inquiry', 'お問い合わせを送信'),
-                style: const TextStyle(
-                  fontFamily: 'Cormorant Garamond',
-                  color: Color(0xFFC7A86B),
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.close, color: Colors.white70),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ],
-          ),
-          content: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: SizedBox(
-                width: 450,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      tr('Full Name *', 'お名前 *'),
-                      style: const TextStyle(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: Colors.white70,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      controller: nameController,
-                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
-                      decoration: _buildInputDecoration(tr('Enter your name', '名前を入力してください')),
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return tr('Please enter your name', '名前を入力してください');
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      tr('Email Address *', 'メールアドレス *'),
-                      style: const TextStyle(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: Colors.white70,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      controller: emailController,
-                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
-                      decoration: _buildInputDecoration(tr('Enter your email', 'メールアドレスを入力してください')),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return tr('Please enter your email', 'メールアドレスを入力してください');
-                        }
-                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
-                          return tr('Please enter a valid email', '有効なメールアドレスを入力してください');
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      tr('Company Name', '会社名'),
-                      style: const TextStyle(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: Colors.white70,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      controller: companyController,
-                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
-                      decoration: _buildInputDecoration(tr('Enter your company name', '会社名を入力してください')),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      tr('Inquiry Reason *', 'お問い合わせ理由 *'),
-                      style: const TextStyle(
-                        fontFamily: 'Plus Jakarta Sans',
-                        color: Colors.white70,
-                        fontSize: 13,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    TextFormField(
-                      controller: reasonController,
-                      style: const TextStyle(color: Colors.white, fontFamily: 'Plus Jakarta Sans'),
-                      maxLines: 4,
-                      decoration: _buildInputDecoration(tr('Describe your inquiry...', 'お問い合わせ内容を説明してください...')),
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return tr('Please enter your inquiry reason', 'お問い合わせ理由を入力してください');
-                        }
-                        return null;
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          actionsPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(
-                tr('Cancel', 'キャンセル'),
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  color: Colors.white70,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFC7A86B),
-                foregroundColor: const Color(0xFF1F3A2E),
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  final name = nameController.text.trim();
-                  final email = emailController.text.trim();
-                  final company = companyController.text.trim();
-                  final reason = reasonController.text.trim();
-
-                  final subject = Uri.encodeComponent('Inquiry to Nallam Farms from $name');
-                  final body = Uri.encodeComponent(
-                    'Name: $name\n'
-                    'Email: $email\n'
-                    'Company: ${company.isEmpty ? "N/A" : company}\n\n'
-                    'Inquiry Reason:\n$reason'
-                  );
-                  final mailtoUrl = 'mailto:info@nallam-farms.com?subject=$subject&body=$body';
-
-                  if (kIsWeb) {
-                    html.AnchorElement(href: mailtoUrl).click();
-                  }
-
-                  Navigator.of(context).pop();
-
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        tr(
-                          'Opening email client with your inquiry...',
-                          'お問い合わせメールを開いています...',
-                        ),
-                      ),
-                      backgroundColor: const Color(0xFFC7A86B),
-                    ),
-                  );
-                }
-              },
-              child: Text(
-                tr('Submit Inquiry', '送信する'),
-                style: const TextStyle(
-                  fontFamily: 'Plus Jakarta Sans',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  InputDecoration _buildInputDecoration(String hintText) {
-    return InputDecoration(
-      hintText: hintText,
-      hintStyle: const TextStyle(color: Colors.white30, fontSize: 14),
-      filled: true,
-      fillColor: Colors.white.withOpacity(0.08),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Colors.white.withOpacity(0.2)),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Color(0xFFC7A86B)),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Colors.redAccent),
-      ),
-      focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: Colors.redAccent),
-      ),
-      errorStyle: const TextStyle(color: Colors.redAccent),
     );
   }
 }
