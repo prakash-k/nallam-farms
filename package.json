@@ -1,0 +1,9 @@
+{
+  "name": "nallam-farms-root",
+  "version": "1.0.0",
+  "description": "Root Vercel serverless configurations for Nallam Farms",
+  "private": true,
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}

@@ -1,4 +1,4 @@
-const https = require('https');
+const nodemailer = require('nodemailer');
 
 module.exports = async (req, res) => {
   // Add CORS headers
@@ -25,28 +25,39 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields (name, email, reason)' });
   }
 
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Brevo API key is not configured on Vercel environment variables.' });
+  // Get SMTP credentials from Vercel Environment Variables
+  const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const smtpPort = process.env.SMTP_PORT || '587';
+  const smtpUser = process.env.SMTP_USER; // e.g. infonallam@gmail.com
+  const smtpPass = process.env.SMTP_PASS; // e.g. Gmail App Password
+  const targetEmail = 'infonallam@gmail.com';
+
+  if (!smtpUser || !smtpPass) {
+    return res.status(500).json({ 
+      error: 'SMTP user and password credentials are not configured on Vercel environment variables.' 
+    });
   }
 
-  const data = JSON.stringify({
-    sender: {
-      name: "Nallam Farms Contact Form",
-      email: "infonallam@gmail.com"
+  // Configure transporter using SMTP details
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: parseInt(smtpPort),
+    secure: parseInt(smtpPort) === 465, // true for 465, false for 587
+    auth: {
+      user: smtpUser,
+      pass: smtpPass
     },
-    to: [
-      {
-        email: "infonallam@gmail.com",
-        name: "Nallam Farms Support"
-      }
-    ],
-    replyTo: {
-      email: email,
-      name: name
-    },
+    tls: {
+      rejectUnauthorized: false // Avoid connection issues on some hosts
+    }
+  });
+
+  const mailOptions = {
+    from: `"Nallam Farms Website" <${smtpUser}>`,
+    to: targetEmail,
+    replyTo: email,
     subject: `New Inquiry from ${name}`,
-    htmlContent: `
+    html: `
       <html>
         <body style="font-family: sans-serif; line-height: 1.5; color: #333;">
           <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; background-color: #fcfcfc;">
@@ -77,43 +88,13 @@ module.exports = async (req, res) => {
         </body>
       </html>
     `
-  });
-
-  const options = {
-    hostname: 'api.brevo.com',
-    port: 443,
-    path: '/v3/smtp/email',
-    method: 'POST',
-    headers: {
-      'accept': 'application/json',
-      'api-key': apiKey,
-      'content-type': 'application/json',
-      'content-length': Buffer.byteLength(data)
-    }
   };
 
-  const request = https.request(options, (response) => {
-    let responseData = '';
-
-    response.on('data', (chunk) => {
-      responseData += chunk;
-    });
-
-    response.on('end', () => {
-      if (response.statusCode >= 200 && response.statusCode < 300) {
-        return res.status(200).json({ success: true, message: 'Inquiry sent successfully!' });
-      } else {
-        console.error('Brevo API Error:', responseData);
-        return res.status(500).json({ error: 'Failed to send email via Brevo API', details: responseData });
-      }
-    });
-  });
-
-  request.on('error', (error) => {
-    console.error('Request Error:', error);
-    return res.status(500).json({ error: 'Server connection error', details: error.message });
-  });
-
-  request.write(data);
-  request.end();
+  try {
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json({ success: true, message: 'Inquiry sent successfully via SMTP!' });
+  } catch (error) {
+    console.error('SMTP Send Error:', error);
+    return res.status(500).json({ error: 'Failed to send email via SMTP', details: error.message });
+  }
 };
