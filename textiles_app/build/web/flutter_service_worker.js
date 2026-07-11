@@ -69,12 +69,12 @@ const RESOURCES = {"assets/AssetManifest.bin": "e3a142f72c7499874b82593601da8f06
 "farms/assets/turmeric.jpg": "5ca572f0429edd1905ed89a8c3879640",
 "farms/css/style.css": "bc800aa4da78d7b6b18d21f9b4c1f0d8",
 "farms/index.html": "cedf916d770fc556f7bbdd3820f6271e",
-"farms/js/main.js": "372dfddf2dee3d69955e6747fd3128c9",
+"farms/js/main.js": "482cfc7feb1b9db6616f803f4d9890d0",
 "flutter.js": "383e55f7f3cce5be08fcf1f3881f585c",
-"flutter_bootstrap.js": "a8a6931ab13f688abc19cdefb826316a",
+"flutter_bootstrap.js": "ba6be9b6beac74a33f00100d29aab5d2",
 "index.html": "fd75b2b54c22e25a3ebdf795231448ab",
 "/": "fd75b2b54c22e25a3ebdf795231448ab",
-"main.dart.js": "6dd19c52315c1b054a1c43893dfa92cd",
+"main.dart.js": "002c9d95f6f22a78bf6c44ffd20ac590",
 "version.json": "06eb48782ba43fb1b72c777e5a60fe31"};
 // The application shell files that are downloaded before a service worker can
 // start.

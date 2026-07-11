@@ -255,21 +255,63 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log('Nallam Farms Form Submission:', { name, email, phone, type, message });
             
-            // Emulate premium API request time
-            const submitBtn = document.getElementById('form-submit-btn');
-            submitBtn.textContent = 'Sending Inquiry...';
-            submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-            
-            setTimeout(() => {
-                // Fade out form, fade in success block
+            // Send inquiry to Vercel Serverless Function
+            fetch('/api/send-inquiry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    company: `Phone: ${phone} | Category: ${type}`,
+                    reason: message
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Serverless function returned error status ' + response.status);
+            })
+            .then(data => {
                 inquiryForm.style.display = 'none';
                 formSuccessAlert.style.display = 'flex';
                 
                 submitBtn.textContent = 'Send Message';
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '';
-            }, 1200);
+            })
+            .catch(error => {
+                console.error('Error submitting inquiry form:', error);
+                
+                // Fallback to mailto link
+                const subject = encodeURIComponent('Inquiry to Nallam Farms from ' + name);
+                const body = encodeURIComponent(
+                    'Name: ' + name + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Phone: ' + phone + '\n' +
+                    'Inquiry Type: ' + type + '\n\n' +
+                    'Message:\n' + message
+                );
+                
+                const mailtoUrl = 'mailto:infonallam@gmail.com?subject=' + subject + '&body=' + body;
+                
+                // Trigger mailto click helper
+                const anchor = document.createElement('a');
+                anchor.href = mailtoUrl;
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+                
+                // Show success block anyway since user is completing via email client
+                inquiryForm.style.display = 'none';
+                formSuccessAlert.style.display = 'flex';
+                
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '';
+            });
         });
         
         resetSuccessBtn.addEventListener('click', () => {

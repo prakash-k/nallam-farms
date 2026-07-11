@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:html' as html if (dart.library.io) 'dart:io';
+import 'dart:convert';
 import 'dart:math';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
@@ -1005,22 +1006,59 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                   final mailtoUrl = 'mailto:infonallam@gmail.com?subject=$subject&body=$body';
 
                   if (kIsWeb) {
-                    _launchUrlWeb(mailtoUrl);
-                  }
-
-                  Navigator.of(context).pop();
-
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        tr(
-                          'Opening email client with your inquiry...',
-                          'お問い合わせメールを開いています...',
-                        ),
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) => const Center(
+                        child: CircularProgressIndicator(color: Color(0xFFC7A86B)),
                       ),
-                      backgroundColor: const Color(0xFFC7A86B),
-                    ),
-                  );
+                    );
+
+                    final request = html.HttpRequest();
+                    request.open('POST', '/api/send-inquiry');
+                    request.setRequestHeader('Content-Type', 'application/json');
+                    
+                    request.send(jsonEncode({
+                      'name': name,
+                      'email': email,
+                      'company': company,
+                      'reason': reason,
+                    }));
+
+                    request.onLoadEnd.listen((event) {
+                      Navigator.of(context).pop(); // Dismiss loading spinner
+                      Navigator.of(context).pop(); // Dismiss form dialog
+
+                      if (request.status == 200) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              tr(
+                                'Inquiry submitted successfully!',
+                                'お問い合わせを送信しました！',
+                              ),
+                            ),
+                            backgroundColor: const Color(0xFF1F3A2E),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              tr(
+                                'Submission failed. Opening email client...',
+                                '送信に失敗しました。メールクライアントを開いています...',
+                              ),
+                            ),
+                            backgroundColor: Colors.redAccent,
+                          ),
+                        );
+                        _launchUrlWeb(mailtoUrl);
+                      }
+                    });
+                  } else {
+                    Navigator.of(context).pop();
+                  }
                 }
               },
               child: Text(
