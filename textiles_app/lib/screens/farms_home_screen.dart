@@ -1002,7 +1002,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                     'Company: ${company.isEmpty ? "N/A" : company}\n\n'
                     'Inquiry Reason:\n$reason'
                   );
-                  final mailtoUrl = 'mailto:info@nallam-farms.com?subject=$subject&body=$body';
+                  final mailtoUrl = 'mailto:infonallam@gmail.com?subject=$subject&body=$body';
 
                   if (kIsWeb) {
                     _launchUrlWeb(mailtoUrl);
@@ -1066,18 +1066,6 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
       ),
       errorStyle: const TextStyle(color: Colors.redAccent),
     );
-  }
-
-  void _launchUrlWeb(String url, {String? target}) {
-    if (kIsWeb) {
-      final anchor = html.AnchorElement(href: url);
-      if (target != null) {
-        anchor.target = target;
-      }
-      html.document.body!.children.add(anchor);
-      anchor.click();
-      anchor.remove();
-    }
   }
 }
 
@@ -1516,5 +1504,17 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
         ),
       ],
     );
+  }
+}
+
+void _launchUrlWeb(String url, {String? target}) {
+  if (kIsWeb) {
+    final anchor = html.AnchorElement(href: url);
+    if (target != null) {
+      anchor.target = target;
+    }
+    html.document.body!.children.add(anchor);
+    anchor.click();
+    anchor.remove();
   }
 }
