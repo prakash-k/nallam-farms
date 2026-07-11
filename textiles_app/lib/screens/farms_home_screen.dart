@@ -473,7 +473,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                       ),
                       onTap: () {
                         if (kIsWeb) {
-                          html.AnchorElement(href: 'https://maps.app.goo.gl/uSCEMsqrB6uq1hde7')..target = '_blank'..click();
+                          _launchUrlWeb('https://maps.app.goo.gl/uSCEMsqrB6uq1hde7', target: '_blank');
                         }
                       },
                     ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.1, end: 0.0),
@@ -768,7 +768,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                 ),
                 onPressed: () {
                   if (kIsWeb) {
-                    html.AnchorElement(href: 'tel:+919524142311').click();
+                    _launchUrlWeb('tel:+919524142311');
                   }
                 },
               ),
@@ -821,7 +821,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                   final message = Uri.encodeComponent(messageText);
                   final url = 'https://wa.me/919524142311?text=$message';
                   if (kIsWeb) {
-                    html.AnchorElement(href: url)..target = '_blank'..click();
+                    _launchUrlWeb(url, target: '_blank');
                   }
                 },
               ),
@@ -1005,7 +1005,7 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
                   final mailtoUrl = 'mailto:info@nallam-farms.com?subject=$subject&body=$body';
 
                   if (kIsWeb) {
-                    html.AnchorElement(href: mailtoUrl).click();
+                    _launchUrlWeb(mailtoUrl);
                   }
 
                   Navigator.of(context).pop();
@@ -1066,6 +1066,18 @@ class _FarmsHomeScreenState extends State<FarmsHomeScreen> {
       ),
       errorStyle: const TextStyle(color: Colors.redAccent),
     );
+  }
+
+  void _launchUrlWeb(String url, {String? target}) {
+    if (kIsWeb) {
+      final anchor = html.AnchorElement(href: url);
+      if (target != null) {
+        anchor.target = target;
+      }
+      html.document.body!.children.add(anchor);
+      anchor.click();
+      anchor.remove();
+    }
   }
 }
 
@@ -1462,7 +1474,7 @@ class _WhatsAppFloatingWidgetState extends State<_WhatsAppFloatingWidget> {
                           final message = Uri.encodeComponent(messageText);
                           final url = 'https://wa.me/919524142311?text=$message';
                           if (kIsWeb) {
-                            html.AnchorElement(href: url)..target = '_blank'..click();
+                            _launchUrlWeb(url, target: '_blank');
                           }
                         },
                       ),
